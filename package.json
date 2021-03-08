@@ -1,0 +1,48 @@
+{
+  "name": "iifl-keyclock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run tslint",
+    "start": "node index.js",
+    "start:local": "SET NODE_ENV=local && npm run version && npm run build && npm start",
+    "start:test": "SET NODE_ENV=development && npm run build && npm start",
+    "start:staging": "SET NODE_ENV=staging && npm run build && npm start",
+    "start:production": "SET NODE_ENV=production && npm run build && npm start",
+    "fix": "tslint --fix --project tsconfig.json 'src/**/*{.ts}'",
+    "tslint": "tslint --project tsconfig.json",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+    "version": "node build-scripts/version-gen.js"
+  },
+  "author": "Santosh Shinde",
+  "license": "",
+  "dependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/cheerio": "^0.22.10",
+    "@types/express": "^4.16.0",
+    "@types/express-session": "^1.17.3",
+    "@types/node": "^10.12.2",
+    "@types/winston": "^2.4.4",
+    "axios": "^0.21.1",
+    "body-parser": "^1.18.3",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.16.4",
+    "express-session": "^1.17.1",
+    "formidable": "^1.2.2",
+    "http-status-codes": "^2.1.4",
+    "jwt-decode": "^3.1.2",
+    "keycloak-admin": "^1.14.8",
+    "recordrtc": "^5.6.1",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.15.0",
+    "typescript": "^3.1.6",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/formidable": "^1.0.32",
+    "nodemon": "^2.0.7",
+    "tslint-microsoft-contrib": "^5.2.1"
+  }
+}

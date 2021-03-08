@@ -1,0 +1,34 @@
+<html>
+    <div>
+        <h3>
+            <%=message%>
+        </h3>
+        <% if (data) { %>
+            <ul>
+            <li>
+                <b>User Name:</b> <%= data.userName %>
+            </li>
+            <li>
+                <b>Name:</b> <%= data.name %>
+            </li>
+            <li>
+                <b>Email:</b> <%= data.email %>
+            </li>
+            <li><b>Role:</b></li>
+                <ul>
+                    <% for(var i=0; i<data.role.length; i++) {%>
+                        <li><%= data.role[i] %></li>
+                    <% } %>
+                </ul>
+            </ul>
+        <% } %>
+    </div>
+    <button onclick="redirect();">Log out</button>
+</html>
+
+
+<script>
+    function redirect() {
+        window.location = "<%- host %>";
+    }
+</script>
