@@ -9,3 +9,4 @@ temp/
 
 # don't check in version file
 /src/version.ts
+.DS_Store

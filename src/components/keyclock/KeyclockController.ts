@@ -31,7 +31,7 @@ export class KeyclockController {
         });
 
         this.kcAdminClient.setConfig({
-            realmName: 'iifl',
+            realmName: 'node',
         });
     }
 
