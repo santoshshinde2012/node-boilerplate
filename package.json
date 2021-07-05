@@ -11,7 +11,8 @@
     "start:staging": "npm run lint && NODE_ENV=staging node build/server.js",
     "start:production": "npm run lint && NODE_ENV=production build/server.js",
     "lint": "eslint src/**/*.ts",
-    "lint-fix": "eslint --fix src/**/*.ts"
+    "lint-fix": "eslint --fix src/**/*.ts",
+    "pretty": "prettier --write 'src/**/*.ts'"
   },
   "author": "Santosh Shinde",
   "license": "Apache-2.0",
@@ -33,7 +34,10 @@
     "@typescript-eslint/parser": "^4.28.1",
     "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "nodemon": "^2.0.9",
+    "prettier": "^2.3.2",
     "ts-node": "^10.0.0"
   }
 }
