@@ -13,3 +13,5 @@ logs/
 .env.test
 .env.staging
 **/.DS_Store
+
+package-lock.json
