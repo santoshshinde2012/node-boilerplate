@@ -11,7 +11,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 ## Common Features
 
 - Quick start
-- Intgerated eslint, prettier and husky
+- Integrated eslint, prettier and husky
 - Common Error Handler
 - Simple and Standard scaffolding
 - Followed SOLID Principles
@@ -52,12 +52,12 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 | Name                              | Description |
 | --------------------------------- | ----------- |
-| **wiki/**                         | You can add project deocumenation and insructions file here |
+| **wiki/**                         | You can add project documentation and insructions file here |
 | **src/**                          | Source files |
 | **src/abstractions**              | Abstarct classes and Interfaces  |
 | **src/components**                | REST API Components & Controllers  |
 | **src/environments**              | Application Environments Handling utility  |
-| **src/lib**                       | Reusabile utilies and library source code like logger |
+| **src/lib**                       | Reusable utilises and library source code like a logger |
 | **src/middleware/**               | Express Middlewares like error handler feature |
 | **.vscode/**                      | VSCode tasks, launch configuration and some other settings |
 | **build/**                        | Compiled source files will be placed here |

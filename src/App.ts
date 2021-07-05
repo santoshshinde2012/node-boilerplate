@@ -5,9 +5,7 @@ import * as helmet from 'helmet';
 import registerRoutes from './routes';
 import Environment from './environments/environment';
 import addErrorHandler from './middleware/error-handler';
-/**
- * Main application class
- */
+
 export default class App {
     public express: express.Application;
 
