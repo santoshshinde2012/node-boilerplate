@@ -3,12 +3,14 @@
 Skeleton for Node.js applications written in TypeScript
 
 ## Purpose
+<hr />
 
 Our main purpose with this Skeleton is to start server application with node js and typescript.
 
 Try it!! I am happy to hear your feedback or any kind of new features.
 
 ## Common Features
+<hr />
 
 - Quick start
 - Intgerated eslint, prettier and husky
@@ -25,6 +27,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 
 ## Core NPM Module
+<hr />
 
 - [x] `express`, `@types/express`
 - [x] `@types/node`
@@ -36,20 +39,38 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - [x] `winston`, `@types/winston`
 
 ## Start The application in Development Mode
+<hr />
 
 - Clone the Application `git clone https://github.com/santoshshinde2012/node-boilerplate.git`
 - Install the dependencies `npm install`
 - Start the application `npm start`
 
 ## Start The application in Production Mode
+<hr />
 
 - Install the dependencies `npm install`
 - Create the build `npm run build`
 - Start the application `npm run start:production`
 - Before starting make sure to creat prod environment `.env.prod` file
 
+## Project Structure
+<hr />
+
+| Name                              | Description |
+| --------------------------------- | ----------- |
+| **wiki/**                         | You can add project deocumenation and insructions file here |
+| **src/**                          | Source files |
+| **src/abstractions**              | Abstarct classes and Interfaces  |
+| **src/components**                | REST API Components & Controllers  |
+| **src/environments**              | Application Environments Handling utility  |
+| **src/lib**                       | Reusabile utilies and library source code like logger |
+| **src/middleware/**               | Express Middlewares like error handler feature |
+| **.vscode/**                      | VSCode tasks, launch configuration and some other settings |
+| **build/**                        | Compiled source files will be placed here |
+
+
 ## Notes
-<br/>
+<hr />
 
 ### 1. Why is my git pre-commit hook not executable by default?
 
@@ -70,3 +91,8 @@ chmod ug+x .git/hooks/*
 - Ensure your dependencies are secure
 - Avoid other known vulnerabilities
 - Additional considerations
+
+
+<hr/>
+
+# Please connect with me on Twitter [@shindesan2012](https://twitter.com/shindesan2012)
