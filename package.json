@@ -1,5 +1,5 @@
 {
-  "name": "node-dynomo-typescript-boilerplate",
+  "name": "node-typescript-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,9 @@
     "start:local": "npm run lint && NODE_ENV=local nodemon index.js",
     "start:test": "npm run lint && NODE_ENV=test nodemon build/server.js",
     "start:staging": "npm run lint && NODE_ENV=staging node build/server.js",
-    "start:production": "npm run lint && NODE_ENV=production build/server.js"
+    "start:production": "npm run lint && NODE_ENV=production build/server.js",
+    "lint": "eslint src/**/*.ts",
+    "lint-fix": "eslint --fix src/**/*.ts"
   },
   "author": "Santosh Shinde",
   "license": "Apache-2.0",
@@ -27,6 +29,9 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb": "^18.2.1",
     "nodemon": "^2.0.9",
     "ts-node": "^10.0.0"
   }
