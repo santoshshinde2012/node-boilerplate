@@ -3,14 +3,12 @@
 Skeleton for Node.js applications written in TypeScript
 
 ## Purpose
-<hr />
 
 Our main purpose with this Skeleton is to start server application with node js and typescript.
 
 Try it!! I am happy to hear your feedback or any kind of new features.
 
 ## Common Features
-<hr />
 
 - Quick start
 - Intgerated eslint, prettier and husky
@@ -27,7 +25,6 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 
 ## Core NPM Module
-<hr />
 
 - [x] `express`, `@types/express`
 - [x] `@types/node`
@@ -39,14 +36,12 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - [x] `winston`, `@types/winston`
 
 ## Start The application in Development Mode
-<hr />
 
 - Clone the Application `git clone https://github.com/santoshshinde2012/node-boilerplate.git`
 - Install the dependencies `npm install`
 - Start the application `npm start`
 
 ## Start The application in Production Mode
-<hr />
 
 - Install the dependencies `npm install`
 - Create the build `npm run build`
@@ -54,7 +49,6 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - Before starting make sure to creat prod environment `.env.prod` file
 
 ## Project Structure
-<hr />
 
 | Name                              | Description |
 | --------------------------------- | ----------- |
@@ -70,7 +64,6 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 
 ## Notes
-<hr />
 
 ### 1. Why is my git pre-commit hook not executable by default?
 
