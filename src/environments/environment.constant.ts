@@ -17,6 +17,6 @@ enum EnvironmentFile {
 }
 
 export {
-    Environments,
-    EnvironmentFile,
+  Environments,
+  EnvironmentFile,
 };

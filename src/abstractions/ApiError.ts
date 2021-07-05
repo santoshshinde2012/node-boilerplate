@@ -10,7 +10,6 @@ export interface IError {
 }
 
 class ApiError extends Error implements IError {
-
   public status = 500;
 
   public success = false;
@@ -18,13 +17,11 @@ class ApiError extends Error implements IError {
   public fields: { name: { message: string } };
 
   constructor(msg: string, statusCode: number, name: string = 'ApiError') {
-      super();
-      this.message = msg;
-      this.status = statusCode;
-      this.name = name;
+    super();
+    this.message = msg;
+    this.status = statusCode;
+    this.name = name;
   }
-
 }
-
 
 export default ApiError;
