@@ -1,0 +1,20 @@
+{
+   "compilerOptions": {
+     "lib": ["es2018"],
+     "target": "es2018",
+     "module": "commonjs",
+     "moduleResolution": "node",
+     "outDir": "./build",
+     "emitDecoratorMetadata": true,
+     "experimentalDecorators": true,
+     "sourceMap": true
+   },
+   "include": [
+     "src/**/*.ts",
+     "index.js",
+     "config/*.config.js" // for *.config.js files
+   ],
+   "exclude": [
+     "node_modules"
+   ]
+ }

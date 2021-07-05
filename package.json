@@ -1,0 +1,33 @@
+{
+  "name": "node-dynomo-typescript-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "build": "tsc -p .",
+    "start:local": "npm run lint && NODE_ENV=local nodemon index.js",
+    "start:test": "npm run lint && NODE_ENV=test nodemon build/server.js",
+    "start:staging": "npm run lint && NODE_ENV=staging node build/server.js",
+    "start:production": "npm run lint && NODE_ENV=production build/server.js"
+  },
+  "author": "Santosh Shinde",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@types/express": "^4.17.12",
+    "@types/node": "^16.0.0",
+    "@types/winston": "^2.3.9",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "http-status-codes": "^2.1.4",
+    "typescript": "^4.3.5",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "nodemon": "^2.0.9",
+    "ts-node": "^10.0.0"
+  }
+}
