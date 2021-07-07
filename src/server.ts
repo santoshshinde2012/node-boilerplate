@@ -1,27 +1,12 @@
 import * as http from 'http';
 import { AddressInfo } from 'net';
-import * as logger from 'winston';
-import { TransformableInfo } from '../node_modules/logform';
 import App  from './App';
 import Environment from './environments/environment';
+import logger from './lib/logger';
 
 const env: Environment = new Environment(process.env.NODE_ENV);
 const app: App = new App(env);
 let server: http.Server;
-
-logger.configure({
-    level: 'debug',
-    transports: [
-        new logger.transports.Console({
-            format: logger.format.combine(
-                logger.format.colorize(),
-                logger.format.timestamp(),
-                logger.format.align(),
-                logger.format.printf((info: TransformableInfo) => `${info.timestamp} ${info.level}: ${info.message}`),
-            ),
-        }),
-    ],
-});
 
 function serverError(error: NodeJS.ErrnoException): void {
     if (error.syscall !== 'listen') {
