@@ -2,12 +2,14 @@ import * as express from 'express';
 import * as util from 'util';
 import logger from '../lib/logger';
 import ApiError from '../abstractions/ApiError';
+import { Environments } from '../environments/environment.constant';
 
 const addErrorHandler = (
   err: ApiError, req: express.Request,
   res: express.Response,
   next: express.NextFunction,
 ): void => {
+
   if (err) {
     const status: number = err.status || 500;
     logger.debug(`REQUEST HANDLING ERROR:
@@ -23,7 +25,12 @@ const addErrorHandler = (
       status,
       stack: '',
     };
-    body.stack = err.stack;
+
+    // If the environment is production then no need to send error stack trace
+    if(process.env.NODE_ENV === Environments.PRODUCTION) {
+      body.stack = err.stack;
+    }
+
     res.status(status).json(body);
   }
   next();
