@@ -63,6 +63,19 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 | **build/**                        | Compiled source files will be placed here |
 
 
+## Default System Health Status API
+
+- `${host}/api/system` - Return the system information in response
+- `${host}/api/time` - Return the current time in response
+- `${host}/api/usage` - Return the process and system memory usage in response
+- `${host}/api/process` -  Return the process details in response
+- `${host}/api/error` - Return the error generated object in response
+
+## Refrences
+
+- [Skeleton for Node.js Apps written in TypeScript](https://javascript.plainenglish.io/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30)
+- [Setup Eslint Prettier and Husky in Node JS Typescript Project](https://gist.github.com/santoshshinde2012/e1433327e5f7a58f98fe3e6651c4d5de)
+
 ## Notes
 
 ### 1. Why is my git pre-commit hook not executable by default?
@@ -86,6 +99,7 @@ chmod ug+x .git/hooks/*
 - Additional considerations
 
 
+
 <hr/>
 
-# Please connect with me on Twitter [@shindesan2012](https://twitter.com/shindesan2012)
+# Please connect with me on Twitter [@shindesan2012](https://twitter.com/shindesan2012) & [https://blog.santoshshinde.com](https://blog.santoshshinde.com/)
