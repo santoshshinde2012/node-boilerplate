@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "build": "tsc -p .",
+    "build": "npm run lint && tsc -p .",
     "start:local": "npm run lint && NODE_ENV=local nodemon index.js",
     "start:test": "npm run lint && NODE_ENV=test nodemon build/server.js",
     "start:staging": "npm run lint && NODE_ENV=staging node build/server.js",
