@@ -23,7 +23,6 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - Follwed Production Ready Best Practices: Security
 - Added only used npm modules
 
-
 ## Core NPM Module
 
 - [x] `express`, `@types/express`
@@ -61,6 +60,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 | **src/middleware/**               | Express Middlewares like error handler feature |
 | **.vscode/**                      | VSCode tasks, launch configuration and some other settings |
 | **build/**                        | Compiled source files will be placed here |
+| **tests/**                        | Test cases based on jest |
 
 
 ## Default System Health Status API
