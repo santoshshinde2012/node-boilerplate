@@ -64,7 +64,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 ## Workflow
 
-![Workflow](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/node-boilerplate?raw=true)
+![Workflow](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/boilerplate-workflow.png?raw=true)
 
 ## Default System Health Status API
 
