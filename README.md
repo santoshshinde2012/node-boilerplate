@@ -62,6 +62,9 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 | **.vscode/**                      | VSCode tasks, launch configuration and some other settings |
 | **build/**                        | Compiled source files will be placed here |
 
+## Workflow
+
+![Workflow](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/node-boilerplate?raw=true)
 
 ## Default System Health Status API
 
