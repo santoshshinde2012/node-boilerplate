@@ -5,7 +5,7 @@ import {
     ReasonPhrases,
     StatusCodes,
 } from 'http-status-codes';
-import logger from '../../lib/logger';
+import * as responsehandler from '../../lib/response-handler';
 import ApiError from '../../abstractions/ApiError';
 import BaseApi from '../BaseApi';
 import { IServerTimeResponse, IResourceUsageResponse, IProcessInfoResponse, ISystemInfoResponse } from './system-status.types';
@@ -21,7 +21,7 @@ export default class SystemStatusController extends BaseApi {
     }
 
     public register(express: Application): void {
-        express.use('/api', this.router);
+        express.use('/api/status', this.router);
         this.router.get('/system', this.getSystemInfo);
         this.router.get('/time', this.getServerTime);
         this.router.get('/usage', this.getResourceUsage);
@@ -42,8 +42,8 @@ export default class SystemStatusController extends BaseApi {
                 },
                 currentUser: os.userInfo(),
             };
-            logger.info(JSON.stringify(response, null, 2));
-            res.json(response);
+            res.locals.data = response;
+            responsehandler.send(res);
         } catch (err) {
             next(err);
         }
@@ -65,7 +65,8 @@ export default class SystemStatusController extends BaseApi {
                 utc,
                 date: now,
             };
-            res.json(time);
+            res.locals.data = time;
+            responsehandler.send(res);
         } catch (error) {
             next(error);
         }
@@ -88,9 +89,8 @@ export default class SystemStatusController extends BaseApi {
                 systemCpu: os.cpus(),
             };
 
-            logger.info(JSON.stringify(response, null, 2));
-
-            res.json(response);
+            res.locals.data = response;
+            responsehandler.send(res);
         } catch (err) {
             next(err);
         }
@@ -107,9 +107,8 @@ export default class SystemStatusController extends BaseApi {
                 applicationVersion: process.version,
                 nodeDependencyVersions: process.versions,
             };
-            logger.info(JSON.stringify(response, null, 2));
-
-            res.json(response);
+            res.locals.data = response;
+            responsehandler.send(res);
         } catch (err) {
             next(err);
         }

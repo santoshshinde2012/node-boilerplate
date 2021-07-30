@@ -1,5 +1,8 @@
 import * as express from 'express';
 import * as util from 'util';
+import {
+  StatusCodes,
+} from 'http-status-codes';
 import logger from '../lib/logger';
 import ApiError from '../abstractions/ApiError';
 import { Environments } from '../environments/environment.constant';
@@ -11,7 +14,7 @@ const addErrorHandler = (
 ): void => {
 
   if (err) {
-    const status: number = err.status || 500;
+    const status: number = err.status || StatusCodes.INTERNAL_SERVER_ERROR;
     logger.debug(`REQUEST HANDLING ERROR:
         \nERROR:\n${JSON.stringify(err)}
         \nREQUEST HEADERS:\n${util.inspect(req.headers)}

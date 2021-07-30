@@ -8,7 +8,7 @@ class Environment {
 
     public connectionUrl: string;
 
-    constructor(env: string) {
+    constructor(env?: string) {
       this.setEnvironment(env);
       const port: string | undefined | number = process.env.PORT || 3146;
       this.port = Number(port);
