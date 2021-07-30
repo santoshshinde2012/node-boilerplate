@@ -11,9 +11,7 @@
    },
    "include": [
      "src/**/*.ts",
-     "tests/**/*.ts",
      "index.js",
-     "jest.config.js",
      "config/*.config.js" // for *.config.js files
    ],
    "exclude": [
