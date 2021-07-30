@@ -13,6 +13,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - Quick start
 - Integrated eslint, prettier and husky
 - Common Error Handler
+- Common Response Handler
 - Simple and Standard scaffolding
 - Followed SOLID Principles
 - Based on Typescript Syntax
@@ -56,11 +57,14 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 | **src/abstractions**              | Abstarct classes and Interfaces  |
 | **src/components**                | REST API Components & Controllers  |
 | **src/environments**              | Application Environments Handling utility  |
-| **src/lib**                       | Reusable utilises and library source code like a logger |
+| **src/lib**                       | Reusable utilises and library source code like a logger|
 | **src/middleware/**               | Express Middlewares like error handler feature |
 | **.vscode/**                      | VSCode tasks, launch configuration and some other settings |
 | **build/**                        | Compiled source files will be placed here |
-| **tests/**                        | Test cases based on jest |
+| **tests/**                        | Test cases will be placed here |
+| **tests/helpers/**                | Helpers for test cases will be placed here  |
+| **tests/unit-tests/**             | Unit Test cases will be placed here  |
+| **tests/integration-tests/**      | API routes (Integration) Test cases will be placed here|
 
 
 ## Default System Health Status API
