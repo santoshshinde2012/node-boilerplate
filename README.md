@@ -23,6 +23,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - Production Ready Skeleton
 - Follwed Production Ready Best Practices: Security
 - Added only used npm modules
+- Unit & Integration Test Cases
 
 ## Core NPM Module
 
