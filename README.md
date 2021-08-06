@@ -60,7 +60,6 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 | **src/environments**              | Application Environments Handling utility  |
 | **src/lib**                       | Reusable utilises and library source code like a logger|
 | **src/middleware/**               | Express Middlewares like error handler feature |
-| **.vscode/**                      | VSCode tasks, launch configuration and some other settings |
 | **build/**                        | Compiled source files will be placed here |
 | **tests/**                        | Test cases will be placed here |
 | **tests/helpers/**                | Helpers for test cases will be placed here  |
