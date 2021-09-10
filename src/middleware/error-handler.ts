@@ -3,9 +3,9 @@ import * as util from 'util';
 import {
   StatusCodes,
 } from 'http-status-codes';
+import { encrypt } from '../lib/crypto';
 import logger from '../lib/logger';
 import ApiError from '../abstractions/ApiError';
-import { Environments } from '../environments/environment.constant';
 
 const addErrorHandler = (
   err: ApiError, req: express.Request,
@@ -21,7 +21,8 @@ const addErrorHandler = (
         \nREQUEST PARAMS:\n${util.inspect(req.params)}
         \nREQUEST QUERY:\n${util.inspect(req.query)}
         \nBODY:\n${util.inspect(req.body)}`);
-    const body = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let body: any = {
       fields: err.fields,
       message: err.message || 'An error occurred during the request.',
       name: err.name,
@@ -30,10 +31,12 @@ const addErrorHandler = (
     };
 
     // If the environment is production then no need to send error stack trace
-    if(process.env.NODE_ENV === Environments.PRODUCTION) {
+    if(environment.isDevEnvironment()) {
       body.stack = err.stack;
     }
-
+    if(environment.applyEncryption) {
+      body = encrypt(JSON.stringify(body), environment.secretKey);
+    }
     res.status(status).json(body);
   }
   next();

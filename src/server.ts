@@ -1,11 +1,13 @@
 import * as http from 'http';
 import { AddressInfo } from 'net';
+import { setGlobalEnvironment } from './global';
 import App  from './App';
 import Environment from './environments/environment';
 import logger from './lib/logger';
 
-const env: Environment = new Environment(process.env.NODE_ENV);
-const app: App = new App(env);
+const env: Environment = new Environment();
+setGlobalEnvironment(env);
+const app: App = new App();
 let server: http.Server;
 
 function serverError(error: NodeJS.ErrnoException): void {
@@ -40,3 +42,5 @@ process.on('unhandledRejection', (reason: Error) => {
     logger.error(reason.stack);
     // application specific logging, throwing an error, or other logic here
 });
+
+
