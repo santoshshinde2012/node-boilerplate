@@ -18,6 +18,8 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - Followed SOLID Principles
 - Based on Typescript Syntax
 - Simple Enviroment Configuration
+- Global Enviroment Object
+- Request/Response Encryption & Decryption Implementation
 - Easily Add new feature
 - Integrated winston Logger
 - Production Ready Skeleton
@@ -70,13 +72,25 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 ![Workflow](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/boilerplate-workflow.png?raw=true)
 
+## Encryption
+
+Set the `APPLY_ENCRYPTION` environment variable to `true` to enable encryption.
+
+## Global Environment Object
+
+You can directly access the environment attributes in any component/file using global environment object. For more details please check file `src/global.ts`.
+
+*Example*
+
+To access the `applyEncryption` attribute from `Envionment` class to Response Handler, write `environment.applyEncryption`;
+
 ## Default System Health Status API
 
-- `${host}/api/system` - Return the system information in response
-- `${host}/api/time` - Return the current time in response
-- `${host}/api/usage` - Return the process and system memory usage in response
-- `${host}/api/process` -  Return the process details in response
-- `${host}/api/error` - Return the error generated object in response
+- `${host}/api/status/system` - Return the system information in response
+- `${host}/api/status/time` - Return the current time in response
+- `${host}/api/status/usage` - Return the process and system memory usage in response
+- `${host}/api/status/process` -  Return the process details in response
+- `${host}/api/status/error` - Return the error generated object in response
 
 ## Refrences
 

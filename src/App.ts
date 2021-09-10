@@ -3,19 +3,12 @@ import * as express from 'express';
 import * as http from 'http';
 import * as helmet from 'helmet';
 import registerRoutes from './routes';
-import Environment from './environments/environment';
 import addErrorHandler from './middleware/error-handler';
 
 export default class App {
     public express: express.Application;
 
     public httpServer: http.Server;
-
-    public env : Environment;
-
-    constructor(env: Environment) {
-        this.env = env;
-    }
 
     public async init(): Promise<void> {
         this.express = express();
