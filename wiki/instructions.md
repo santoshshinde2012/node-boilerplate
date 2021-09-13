@@ -18,3 +18,4 @@ chmod ug+x .git/hooks/*
 - Avoid other known vulnerabilities
 - Additional considerations
 
+### 3. [NodeJS globals and TypeScript](https://marcinbiernat.pl/2020/03/nodejs-globals/)

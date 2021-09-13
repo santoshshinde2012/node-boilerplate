@@ -3,19 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "types": "./types/global.d.ts",
   "scripts": {
     "start": "nodemon index.js",
     "build": "npm run lint && tsc -p .",
     "start:local": "npm run lint && NODE_ENV=local nodemon index.js",
-    "start:test": "npm run lint && NODE_ENV=test nodemon build/server.js",
+    "start:test": "npm run lint && NODE_ENV=test node build/server.js",
     "start:staging": "npm run lint && NODE_ENV=staging node build/server.js",
-    "start:production": "npm run lint && NODE_ENV=production build/server.js",
+    "start:production": "npm run lint && NODE_ENV=production node build/server.js",
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
     "pretty": "prettier --write 'src/**/*.ts'",
     "prepare": "husky install",
+    "test:custom": "npm test -- tests/unit-tests/lib/crypto.spec.ts",
     "precommit": "npm run lint-fix && npm run pretty",
-    "prepush": "npm run lint "
+    "prepush": "npm run lint ",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "author": "Santosh Shinde",
   "license": "Apache-2.0",
@@ -33,6 +37,8 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
+    "@types/jest": "^27.0.1",
+    "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
     "eslint": "^7.30.0",
@@ -41,8 +47,11 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.0",
+    "jest": "^27.0.6",
     "nodemon": "^2.0.9",
     "prettier": "^2.3.2",
+    "supertest": "^6.1.4",
+    "ts-jest": "^27.0.5",
     "ts-node": "^10.0.0"
   }
 }

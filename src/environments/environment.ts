@@ -2,22 +2,26 @@ import * as fs from 'fs';
 import { config as configDotenv } from 'dotenv';
 import * as path from 'path';
 import { EnvironmentFile, Environments } from './environment.constant';
+import IEnvironment from './environment.interface';
 
-class Environment {
+class Environment implements IEnvironment {
+
     public port: number;
 
-    public connectionUrl: string;
+    public secretKey: string;
 
-    constructor(env: string) {
-      this.setEnvironment(env);
+    public applyEncryption: boolean;
+
+    constructor(NODE_ENV?: string) {
+      const env: string= NODE_ENV || process.env.NODE_ENV || Environments.DEV;
       const port: string | undefined | number = process.env.PORT || 3146;
+      this.setEnvironment(env);
       this.port = Number(port);
-      if (process.env.connectionUrl) {
-        this.connectionUrl = process.env.connectionUrl;
-      }
+      this.applyEncryption = JSON.parse(process.env.APPLY_ENCRYPTION);
+      this.secretKey =  process.env.SECRET_KEY;
     }
 
-    public currentEnvironment(): string {
+    public getCurrentEnvironment(): string {
       let environment: string = process.env.NODE_ENV || Environments.DEV;
 
       if (!environment) {
@@ -36,14 +40,6 @@ class Environment {
         default:
           return Environments.LOCAL;
       }
-    }
-
-    public isProduction(): boolean {
-      return this.currentEnvironment() === Environments.PRODUCTION;
-    }
-
-    public getDatabaseConnectionURL(): string {
-      return '';
     }
 
     public setEnvironment(env: string): void {
@@ -70,6 +66,23 @@ class Environment {
       }
       configDotenv({ path: envPath });
     }
+
+    public isProductionEnvironment(): boolean {
+      return this.getCurrentEnvironment() === Environments.PRODUCTION;
+    }
+
+    public isDevEnvironment(): boolean {
+      return this.getCurrentEnvironment() === Environments.DEV || this.getCurrentEnvironment() === Environments.LOCAL;
+    }
+
+    public isTestEnvironment(): boolean {
+      return this.getCurrentEnvironment() === Environments.TEST;
+    }
+
+    public isStagingEnvironment(): boolean {
+      return this.getCurrentEnvironment() === Environments.STAGING;
+    }
+
 }
 
 export default Environment;
