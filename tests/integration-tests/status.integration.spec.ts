@@ -1,6 +1,6 @@
 import 'jest';
-import * as express from 'express';
-import * as request from 'supertest';
+import express from 'express';
+import request from 'supertest';
 import {
     StatusCodes,
 } from 'http-status-codes';
