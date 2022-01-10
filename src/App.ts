@@ -1,7 +1,7 @@
-import * as cors from 'cors';
-import * as express from 'express';
-import * as http from 'http';
-import * as helmet from 'helmet';
+import cors from 'cors';
+import express from 'express';
+import http from 'http';
+import helmet from 'helmet';
 import registerRoutes from './routes';
 import addErrorHandler from './middleware/error-handler';
 
@@ -33,7 +33,7 @@ export default class App {
         // support application/json type post data
         // support application/x-www-form-urlencoded post data
         // Helmet can help protect your app from some well-known web vulnerabilities by setting HTTP headers appropriately.
-        this.express.use(helmet());
+        this.express.use(helmet({ contentSecurityPolicy: false }));
         this.express.use(express.json({ limit: '100mb' }));
         this.express.use(express.urlencoded({ limit: '100mb', extended: true }));
         this.express.use(cors());
