@@ -4,12 +4,14 @@ on:
     branches:
       - main
       - master
+      - dev
       - release-*
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
       - main
       - master
+      - dev
       - release-*
 
 jobs:
