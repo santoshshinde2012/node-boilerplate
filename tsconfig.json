@@ -10,6 +10,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
        "paths": {
            "*": [
