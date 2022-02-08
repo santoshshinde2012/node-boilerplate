@@ -23,6 +23,7 @@ export default class App {
      */
     private routes(): void {
         this.express.get('/', this.basePathRoute);
+        this.express.get('/web', this.basePathRoute);
         registerRoutes(this.express);
     }
 
