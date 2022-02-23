@@ -43,8 +43,8 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 ```mermaid
   flowchart TD;
       A[Start the application]--NODE_ENV=local-->B[Development Mode];
-      A--NODE_ENV=test-->C[Production Mode];
-      A--NODE_ENV=production-->D[Test Mode];
+      A--NODE_ENV=production-->C[Production Mode];
+      A--NODE_ENV=test-->D[Test Mode];
 
       B-->E[Install the dependencies `npm install`];
       C-->F[Install the dependencies `npm install`];
@@ -54,8 +54,8 @@ Try it!! I am happy to hear your feedback or any kind of new features.
       F--creat test environment `.env.test`-->I[Create the build `npm run build`];
       G--creat prod environment `.env.prod`-->J[Create the build `npm run build`];
 
-      I-->K[Start the application `npm start:production`];
-      J-->L[Start the application `start:test`];
+      I-->K[Start the application `npm start:test`];
+      J-->L[Start the application `start:production`];
 
 ```
 ## Start The application in Development Mode
