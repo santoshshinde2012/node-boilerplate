@@ -54,8 +54,8 @@ Try it!! I am happy to hear your feedback or any kind of new features.
       F--creat test environment `.env.test`-->I[Create the build `npm run build`];
       G--creat prod environment `.env.prod`-->J[Create the build `npm run build`];
 
-      I-->K[Start the application `npm start`];
-      J-->L[Start the application `npm start`];
+      I-->K[Start the application `npm start:test`];
+      J-->L[Start the application `start:production`];
 
 ```
 ## Start The application in Development Mode
