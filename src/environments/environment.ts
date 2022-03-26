@@ -1,6 +1,7 @@
 import * as fs from 'fs';
-import { config as configDotenv } from 'dotenv';
 import * as path from 'path';
+import { config as configDotenv } from 'dotenv';
+
 import { EnvironmentFile, Environments } from './environment.constant';
 import IEnvironment from './environment.interface';
 

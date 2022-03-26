@@ -1,4 +1,4 @@
-# Node-Typescript-Boilerplate
+# [Node-Typescript-Boilerplate](https://blog.santoshshinde.com/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30)
 
 Skeleton for Node.js applications written in TypeScript
 
@@ -38,6 +38,26 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - [x] `http-status-codes`
 - [x] `winston`, `@types/winston`
 
+# Start the application
+
+```mermaid
+  flowchart TD;
+      A[Start the application]--NODE_ENV=local-->B[Development Mode];
+      A--NODE_ENV=test-->C[Test Mode];
+      A--NODE_ENV=production-->D[Production Mode];
+
+      B-->E[Install the dependencies `npm install`];
+      C-->F[Install the dependencies `npm install`];
+      D-->G[Install the dependencies `npm install`];
+
+      E--creat local environment `.env.local`-->H[Start the application `npm start`];
+      F--creat test environment `.env.test`-->I[Create the build `npm run build`];
+      G--creat prod environment `.env.prod`-->J[Create the build `npm run build`];
+
+      I-->K[Start the application `npm start:test`];
+      J-->L[Start the application `start:production`];
+
+```
 ## Start The application in Development Mode
 
 - Clone the Application `git clone https://github.com/santoshshinde2012/node-boilerplate.git`
@@ -50,6 +70,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - Create the build `npm run build`
 - Start the application `npm run start:production`
 - Before starting make sure to creat prod environment `.env.prod` file
+
 
 ## Project Structure
 
@@ -71,6 +92,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 ## Workflow
 
 ![Workflow](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/boilerplate-workflow.png?raw=true)
+
 
 ## Encryption
 
