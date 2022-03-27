@@ -33,6 +33,15 @@
     "@typescript-eslint/no-unused-vars": "warn",
     "quotes": [2, "single", { "avoidEscape": true }],
     "class-methods-use-this": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",

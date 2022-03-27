@@ -1,11 +1,11 @@
-import * as express from 'express';
 import * as util from 'util';
+import * as express from 'express';
 import {
   StatusCodes,
 } from 'http-status-codes';
+import ApiError from '../abstractions/ApiError';
 import { encrypt } from '../lib/crypto';
 import logger from '../lib/logger';
-import ApiError from '../abstractions/ApiError';
 
 const addErrorHandler = (
   err: ApiError, req: express.Request,
