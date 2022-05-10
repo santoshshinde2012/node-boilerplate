@@ -32,6 +32,8 @@ jobs:
       run: npm install
     - name: Linter
       run:  npm run lint
+    - name: Format
+      run:  npm run pretty
     - name: Build
       run: npm run build --if-present
     - name: Test
