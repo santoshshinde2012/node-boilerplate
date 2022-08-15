@@ -41,7 +41,8 @@ export default class App {
     }
 
     private parseRequestHeader(req: express.Request, res: express.Response, next: Function): void {
-        console.log(req.headers.access_token);
+        // parse request header
+        // console.log(req.headers.access_token);
         next();
     }
 
