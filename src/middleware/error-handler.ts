@@ -4,7 +4,7 @@ import {
   StatusCodes,
 } from 'http-status-codes';
 import ApiError from '../abstractions/ApiError';
-import { encrypt } from '../lib/crypto';
+import Crypto from '../lib/crypto';
 import logger from '../lib/logger';
 
 const addErrorHandler = (
@@ -35,7 +35,7 @@ const addErrorHandler = (
       body.stack = err.stack;
     }
     if(environment.applyEncryption) {
-      body = encrypt(JSON.stringify(body), environment.secretKey);
+      body = Crypto.encrypt(JSON.stringify(body), environment.secretKey);
     }
     res.status(status).json(body);
   }

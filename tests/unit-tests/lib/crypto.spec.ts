@@ -1,7 +1,7 @@
 import 'jest';
 import { Environments } from '../../../src/environments/environment.constant';
-import { encrypt, decrypt } from '../../../src/lib/crypto';
 import Environment from '../../../src/environments/environment';
+import Crypto from '../../../src/lib/crypto';
 
 describe('Crypto Lib (Encryption/Decryption)', () => {
     let instance: Environment;
@@ -11,15 +11,15 @@ describe('Crypto Lib (Encryption/Decryption)', () => {
 
     it('Testing for text', () => {
         const data = 'This data is to be encrypted';
-        const encrypted = encrypt(data, instance.secretKey);
-        const decrypted = decrypt(encrypted, instance.secretKey);
+        const encrypted = Crypto.encrypt(data, instance.secretKey);
+        const decrypted = Crypto.decrypt(encrypted, instance.secretKey);
         expect(decrypted).toEqual(data);
     });
 
     it('Testing for array', () => {
         const data = ['this', 'is', 'array'];
-        const encrypted = encrypt(JSON.stringify(data), instance.secretKey);
-        const decrypted = decrypt(encrypted, instance.secretKey);
+        const encrypted = Crypto.encrypt(JSON.stringify(data), instance.secretKey);
+        const decrypted = Crypto.decrypt(encrypted, instance.secretKey);
         expect(JSON.parse(decrypted)).toEqual(data);
     });
 
@@ -28,8 +28,8 @@ describe('Crypto Lib (Encryption/Decryption)', () => {
         key1: 'value1',
         key2: 'value2',
         };
-        const encrypted = encrypt(JSON.stringify(data), instance.secretKey);
-        const decrypted = decrypt(encrypted, instance.secretKey);
+        const encrypted = Crypto.encrypt(JSON.stringify(data), instance.secretKey);
+        const decrypted = Crypto.decrypt(encrypted, instance.secretKey);
         expect(JSON.parse(decrypted)).toEqual(data);
     });
 });
