@@ -10,14 +10,14 @@ export default class Crypto {
   // So, the more is the number of iterations, the more secure the derived key will be,
   // but in that case it takes greater amount of time to complete.
   // number of interation - the value of 2145 is randomly chosen
-  private static iterations: number = 2145;
+  private static iterations = 2145;
 
   // keylen: It is the key of the required byte length and it is of type number.
   // derive encryption key: 32 byte key length
-  private static keylen: number = 32;
+  private static keylen = 32;
 
   // digest: It is a digest algorithms of string type.
-  private static digest: string = 'sha512';
+  private static digest = 'sha512';
 
   // random salt
   private static salt: Buffer = crypto.randomBytes(64);

@@ -4,8 +4,8 @@ import {
   StatusCodes,
 } from 'http-status-codes';
 import ApiError from '../abstractions/ApiError';
-import logger from '../lib/logger';
 import Crypto from '../lib/crypto';
+import logger from '../lib/logger';
 
 const addErrorHandler = (
   err: ApiError, req: express.Request,
