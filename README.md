@@ -38,26 +38,10 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - [x] `http-status-codes`
 - [x] `winston`, `@types/winston`
 
-# Start the application
+# [Start the application](https://blog.santoshshinde.com/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30)
 
-```mermaid
-  flowchart TD;
-      A[Start the application]--NODE_ENV=local-->B[Development Mode];
-      A--NODE_ENV=test-->C[Test Mode];
-      A--NODE_ENV=production-->D[Production Mode];
+![Workflow](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/environment.jpg?raw=true)
 
-      B-->E[Install the dependencies `npm install`];
-      C-->F[Install the dependencies `npm install`];
-      D-->G[Install the dependencies `npm install`];
-
-      E--creat local environment `.env.local`-->H[Start the application `npm start`];
-      F--creat test environment `.env.test`-->I[Create the build `npm run build`];
-      G--creat prod environment `.env.prod`-->J[Create the build `npm run build`];
-
-      I-->K[Start the application `npm start:test`];
-      J-->L[Start the application `start:production`];
-
-```
 ## Start The application in Development Mode
 
 - Clone the Application `git clone https://github.com/santoshshinde2012/node-boilerplate.git`
@@ -145,4 +129,4 @@ chmod ug+x .git/hooks/*
 
 <hr/>
 
-# Please connect with me on Twitter [@shindesan2012](https://twitter.com/shindesan2012) & [https://blog.santoshshinde.com](https://blog.santoshshinde.com/)
+### Please connect with me on Twitter [@shindesan2012](https://twitter.com/shindesan2012) & [https://blog.santoshshinde.com](https://blog.santoshshinde.com/)
