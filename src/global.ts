@@ -9,5 +9,3 @@ declare global {
 export const setGlobalEnvironment = (environment: Environment): void => {
   global.environment = environment;
 };
-
-export const xyz = 10;

@@ -15,7 +15,6 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - Common Error Handler
 - Common Response Handler
 - Simple and Standard scaffolding
-- Followed SOLID Principles
 - Based on Typescript Syntax
 - Simple Enviroment Configuration
 - Global Enviroment Object
@@ -75,7 +74,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 ## Workflow
 
-![Workflow](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/boilerplate-workflow.png?raw=true)
+![Workflow](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/boilerplate-workflow.jpg?raw=true)
 
 
 ## Encryption
