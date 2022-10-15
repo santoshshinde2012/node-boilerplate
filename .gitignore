@@ -4,7 +4,9 @@ node_modules/
 build/
 tmp/
 temp/
-/coverage/
+coverage/lcov-report
+coverage/coverage-final.json
+coverage/clover.xml
 /.nyc_output/
 logs/
 
