@@ -15,13 +15,23 @@ import { IServerTimeResponse, IResourceUsageResponse, IProcessInfoResponse, ISys
  */
 export default class SystemStatusController extends BaseApi {
 
-    constructor(express: Application) {
+    private basePath: string;
+
+    /**
+     * 
+     * @param basePath 
+     */
+    constructor(basePath: string) {
         super();
-        this.register(express);
+        this.basePath = basePath;
     }
 
+    /**
+     * 
+     * @param express 
+     */
     public register(express: Application): void {
-        express.use('/api/status', this.router);
+        express.use(this.basePath, this.router);
         this.router.get('/system', this.getSystemInfo);
         this.router.get('/time', this.getServerTime);
         this.router.get('/usage', this.getResourceUsage);
@@ -29,6 +39,12 @@ export default class SystemStatusController extends BaseApi {
         this.router.get('/error', this.getError);
     }
 
+    /**
+     * 
+     * @param req 
+     * @param res 
+     * @param next 
+     */
     public getSystemInfo(req: Request, res: Response, next: NextFunction): void {
         try {
             const response: ISystemInfoResponse = {
@@ -49,6 +65,12 @@ export default class SystemStatusController extends BaseApi {
         }
     }
 
+    /**
+     * 
+     * @param req 
+     * @param res 
+     * @param next 
+     */
     public getError(req: Request, res: Response, next: NextFunction): void {
         try {
             throw new ApiError(ReasonPhrases.BAD_REQUEST, StatusCodes.BAD_REQUEST);
@@ -57,6 +79,12 @@ export default class SystemStatusController extends BaseApi {
         }
     }
 
+    /**
+     * 
+     * @param req 
+     * @param res 
+     * @param next 
+     */
     public getServerTime(req: Request, res: Response, next: NextFunction): void {
         try {
             const now: Date = new Date();
@@ -72,6 +100,12 @@ export default class SystemStatusController extends BaseApi {
         }
     }
 
+    /**
+     * 
+     * @param req 
+     * @param res 
+     * @param next 
+     */
     public getResourceUsage(req: Request, res: Response, next: NextFunction): void {
         try {
             const totalMem: number = os.totalmem();
@@ -96,6 +130,12 @@ export default class SystemStatusController extends BaseApi {
         }
     }
 
+    /**
+     * 
+     * @param req 
+     * @param res 
+     * @param next 
+     */
     public getProcessInfo(req: Request, res: Response, next: NextFunction): void {
         try {
             const response: IProcessInfoResponse = {
