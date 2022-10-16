@@ -37,15 +37,9 @@ export default class App {
         this.express.use(helmet({ contentSecurityPolicy: false }));
         this.express.use(express.json({ limit: '100mb' }));
         this.express.use(express.urlencoded({ limit: '100mb', extended: true }));
+        // add multiple cors options as per your use
         const corsOptions = {
-            origin: '*',
-            methods: [
-                'GET',
-                'POST',
-                'PUT',
-                'PATCH',
-                'DELETE'
-              ]
+            origin: ['http://localhost:8080/', 'http://example.com/'],
         };
         this.express.use(cors(corsOptions));
     }
