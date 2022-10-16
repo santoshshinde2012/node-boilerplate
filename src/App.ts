@@ -37,7 +37,17 @@ export default class App {
         this.express.use(helmet({ contentSecurityPolicy: false }));
         this.express.use(express.json({ limit: '100mb' }));
         this.express.use(express.urlencoded({ limit: '100mb', extended: true }));
-        this.express.use(cors());
+        const corsOptions = {
+            origin: '*',
+            methods: [
+                'GET',
+                'POST',
+                'PUT',
+                'PATCH',
+                'DELETE'
+              ]
+        };
+        this.express.use(cors(corsOptions));
     }
 
     private parseRequestHeader(req: express.Request, res: express.Response, next: Function): void {
