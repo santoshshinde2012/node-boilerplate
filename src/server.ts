@@ -26,7 +26,7 @@ function serverListening(): void {
 app.init().then(() => {
     app.express.set('port', env.port);
 
-    server = app.httpServer; // http.createServer(App);
+    server = app.httpServer;
     server.on('error', serverError);
     server.on('listening', serverListening);
     server.listen(env.port);

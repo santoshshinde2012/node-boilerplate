@@ -56,7 +56,7 @@ export default class Crypto {
     // extract the auth tag
     const tag = cipher.getAuthTag();
 
-    // return [enc1, enc2, iv, tag];
+    // concat the encrypted result with iv and tag
     const encryptedData = Buffer.concat([enc1, enc2, iv, tag]).toString(outputEncoding);
 
     // return the result
