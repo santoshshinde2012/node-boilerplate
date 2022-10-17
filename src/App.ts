@@ -2,7 +2,6 @@ import cors from 'cors';
 import express from 'express';
 import http from 'http';
 import helmet from 'helmet';
-import * as path from 'path';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json'
 import registerRoutes from './routes';
