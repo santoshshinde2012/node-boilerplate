@@ -4,6 +4,7 @@ node_modules/
 build/
 tmp/
 temp/
+logs
 coverage/lcov-report
 coverage/coverage-final.json
 coverage/clover.xml

@@ -2,6 +2,9 @@ import cors from 'cors';
 import express from 'express';
 import http from 'http';
 import helmet from 'helmet';
+import * as path from 'path';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../swagger.json'
 import registerRoutes from './routes';
 import addErrorHandler from './middleware/error-handler';
 
@@ -16,6 +19,10 @@ export default class App {
         this.middleware();
         this.routes();
         this.addErrorHandler();
+        // In a development environment, Swagger will be enabled.
+        if(environment.isDevEnvironment()) {
+            this.setupSwaggerDocs();
+        }
     }
 
     /**
@@ -39,7 +46,7 @@ export default class App {
         this.express.use(express.urlencoded({ limit: '100mb', extended: true }));
         // add multiple cors options as per your use
         const corsOptions = {
-            origin: ['http://localhost:8080/', 'http://example.com/'],
+            origin: ['http://localhost:8080/', 'http://example.com/', 'http://127.0.0.1:3146'],
         };
         this.express.use(cors(corsOptions));
     }
@@ -56,5 +63,9 @@ export default class App {
 
     private addErrorHandler(): void {
         this.express.use(addErrorHandler);
+    }
+
+    private setupSwaggerDocs(): void {
+        this.express.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     }
 }
