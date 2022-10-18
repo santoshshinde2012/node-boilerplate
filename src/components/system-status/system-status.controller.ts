@@ -5,7 +5,6 @@ import {
     ReasonPhrases,
     StatusCodes,
 } from 'http-status-codes';
-import * as responsehandler from '../../lib/response-handler';
 import ApiError from '../../abstractions/ApiError';
 import BaseApi from '../BaseApi';
 import { IServerTimeResponse, IResourceUsageResponse, IProcessInfoResponse, ISystemInfoResponse } from './system-status.types';
@@ -59,7 +58,7 @@ export default class SystemStatusController extends BaseApi {
                 currentUser: os.userInfo(),
             };
             res.locals.data = response;
-            responsehandler.send(res);
+            super.send(res);
         } catch (err) {
             next(err);
         }
@@ -94,7 +93,7 @@ export default class SystemStatusController extends BaseApi {
                 date: now,
             };
             res.locals.data = time;
-            responsehandler.send(res);
+            super.send(res);
         } catch (error) {
             next(error);
         }
@@ -124,7 +123,7 @@ export default class SystemStatusController extends BaseApi {
             };
 
             res.locals.data = response;
-            responsehandler.send(res);
+            super.send(res);
         } catch (err) {
             next(err);
         }
@@ -148,7 +147,7 @@ export default class SystemStatusController extends BaseApi {
                 nodeDependencyVersions: process.versions,
             };
             res.locals.data = response;
-            responsehandler.send(res);
+            super.send(res);
         } catch (err) {
             next(err);
         }

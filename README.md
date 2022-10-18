@@ -13,7 +13,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 - Quick start
 - Integrated eslint, prettier and husky
-- Common Error & Response Handler
+- Global Error & Response Handler
 - Simple and Standard scaffolding
 - Based on Typescript Syntax
 - Simple & Global Enviroment Configuration
@@ -74,7 +74,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 ## Workflow
 
-![Workflow](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/boilerplate-workflow.jpg?raw=true)
+![Workflow](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/boilerplate-components.jpg?raw=true)
 
 
 ## Encryption
