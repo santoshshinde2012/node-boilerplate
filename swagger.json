@@ -1,0 +1,93 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Node Typescript Boilerplate for Microservices. Skeleton for Node.js Apps written in TypeScript (with Setup Instructions for ESLint, Prettier, and Husky)",
+        "version": "1.0.0",
+        "title": "Node Boilerplate"
+    },
+    "host": "",
+    "basePath": "/api",
+    "tags": [{
+        "name": "node-boilerplate",
+        "description": "Node Typescript Boilerplate"
+    }],
+    "schemes": ["http", "https"],
+    "paths": {
+        "/status/system": {
+            "get": {
+                "tags": ["node-boilerplate"],
+                "summary": "get system status",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/status/time": {
+            "get": {
+                "tags": ["node-boilerplate"],
+                "summary": "get server time",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/status/usage": {
+            "get": {
+                "tags": ["node-boilerplate"],
+                "summary": "get server usage",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/status/process": {
+            "get": {
+                "tags": ["node-boilerplate"],
+                "summary": "get server process",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    }
+                },
+                "security": []
+            }
+        }
+    },
+    "securityDefinitions": {},
+    "definitions": {
+        "ApiResponse": {
+            "type": "object",
+            "properties": {
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Node Typescript Boilerplate",
+        "url": "https://blog.santoshshinde.com/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30"
+    }
+}

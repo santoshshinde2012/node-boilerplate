@@ -13,18 +13,17 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 - Quick start
 - Integrated eslint, prettier and husky
-- Common Error Handler
-- Common Response Handler
+- Common Error & Response Handler
 - Simple and Standard scaffolding
 - Based on Typescript Syntax
-- Simple Enviroment Configuration
-- Global Enviroment Object
+- Simple & Global Enviroment Configuration
 - Request/Response Encryption & Decryption Implementation
 - Easily Add new feature
 - Integrated winston Logger
 - Production Ready Skeleton
 - Follwed Production Ready Best Practices: Security
 - Added only used npm modules
+- Swagger Documentation Support
 - Unit & Integration Test Cases
 
 ## Core NPM Module
@@ -90,6 +89,11 @@ You can directly access the environment attributes in any component/file using g
 
 To access the `applyEncryption` attribute from `Envionment` class to Response Handler, write `environment.applyEncryption`;
 
+## Swagger API Documentation
+
+The swagger documentation is available at the following url `${host}/docs`:  
+
+[http://localhost:3146/docs](http://localhost:3146/docs)
 ## Default System Health Status API
 
 - `${host}/api/status/system` - Return the system information in response
