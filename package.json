@@ -15,7 +15,7 @@
     "lint-fix": "eslint --fix src/**/*.ts",
     "pretty": "prettier --write \"src/**/*.ts\"",
     "prepare": "husky install",
-    "test:custom": "npm test -- tests/unit-tests/lib/crypto.spec.ts",
+    "test:custom": "npm test --  tests/unit-tests/environments/environment.spec.ts",
     "precommit": "npm run lint-fix && npm run pretty",
     "prepush": "npm run lint ",
     "test": "jest --coverage",
