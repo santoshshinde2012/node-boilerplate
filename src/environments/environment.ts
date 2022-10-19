@@ -13,38 +13,36 @@ class Environment implements IEnvironment {
 
     public applyEncryption: boolean;
 
+    public env: string;
+
+    /**
+     * 
+     * @param NODE_ENV 
+     */
     constructor(NODE_ENV?: string) {
-      const env: string= NODE_ENV || process.env.NODE_ENV || Environments.DEV;
+      this.env = NODE_ENV || process.env.NODE_ENV || Environments.DEV;
       const port: string | undefined | number = process.env.PORT || 3146;
-      this.setEnvironment(env);
+      this.setEnvironment(this.env);
       this.port = Number(port);
       this.applyEncryption = JSON.parse(process.env.APPLY_ENCRYPTION);
       this.secretKey =  process.env.SECRET_KEY;
     }
 
+    /**
+     * 
+     * @returns 
+     */
     public getCurrentEnvironment(): string {
-      let environment: string = process.env.NODE_ENV || Environments.DEV;
-
-      if (!environment) {
-        environment = Environments.LOCAL;
-      }
-      switch (environment) {
-        case Environments.PRODUCTION:
-          return Environments.PRODUCTION;
-        case Environments.DEV:
-        case Environments.TEST:
-        case Environments.QA:
-          return Environments.TEST;
-        case Environments.STAGING:
-          return Environments.STAGING;
-        case Environments.LOCAL:
-        default:
-          return Environments.LOCAL;
-      }
+      return this.env;
     }
 
+    /**
+     * 
+     * @param env 
+     */
     public setEnvironment(env: string): void {
       let envPath: string;
+      this.env = env || Environments.LOCAL;
       const rootdir : string = path.resolve(__dirname, '../../');
       switch (env) {
         case Environments.PRODUCTION:
@@ -68,18 +66,34 @@ class Environment implements IEnvironment {
       configDotenv({ path: envPath });
     }
 
+    /**
+     * 
+     * @returns 
+     */
     public isProductionEnvironment(): boolean {
       return this.getCurrentEnvironment() === Environments.PRODUCTION;
     }
 
+    /**
+     * 
+     * @returns 
+     */
     public isDevEnvironment(): boolean {
       return this.getCurrentEnvironment() === Environments.DEV || this.getCurrentEnvironment() === Environments.LOCAL;
     }
 
+    /**
+     * 
+     * @returns 
+     */
     public isTestEnvironment(): boolean {
       return this.getCurrentEnvironment() === Environments.TEST;
     }
 
+    /**
+     * 
+     * @returns 
+     */
     public isStagingEnvironment(): boolean {
       return this.getCurrentEnvironment() === Environments.STAGING;
     }
