@@ -15,9 +15,16 @@ export default class App {
     public async init(): Promise<void> {
         this.express = express();
         this.httpServer = http.createServer(this.express);
+
+        // add all global middleware like cors
         this.middleware();
+
+        // // register the all routes
         this.routes();
-        this.addErrorHandler();
+
+        // add the middleware to handle error, make sure to add if after registering routes method
+        this.express.use(addErrorHandler);
+
         // In a development environment, Swagger will be enabled.
         if(environment.isDevEnvironment()) {
             this.setupSwaggerDocs();
@@ -58,10 +65,6 @@ export default class App {
 
     private basePathRoute(request: express.Request, response: express.Response): void {
         response.json({ message : 'base path' });
-    }
-
-    private addErrorHandler(): void {
-        this.express.use(addErrorHandler);
     }
 
     private setupSwaggerDocs(): void {

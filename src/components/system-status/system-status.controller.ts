@@ -58,6 +58,7 @@ export default class SystemStatusController extends BaseApi {
                 currentUser: os.userInfo(),
             };
             res.locals.data = response;
+            // call base class method
             super.send(res);
         } catch (err) {
             next(err);
@@ -74,6 +75,7 @@ export default class SystemStatusController extends BaseApi {
         try {
             throw new ApiError(ReasonPhrases.BAD_REQUEST, StatusCodes.BAD_REQUEST);
         } catch (error) {
+            // from here error handler will get call
             next(error);
         }
     }
