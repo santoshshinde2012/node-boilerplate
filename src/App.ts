@@ -25,8 +25,8 @@ export default class App {
         // add the middleware to handle error, make sure to add if after registering routes method
         this.express.use(addErrorHandler);
 
-        // In a development environment, Swagger will be enabled.
-        if(environment.isDevEnvironment()) {
+        // In a development/test environment, Swagger will be enabled.
+        if(environment.isDevEnvironment() || environment.isTestEnvironment()) {
             this.setupSwaggerDocs();
         }
     }

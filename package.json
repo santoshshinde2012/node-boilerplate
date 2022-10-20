@@ -18,7 +18,7 @@
     "test:custom": "npm test --  tests/unit-tests/environments/environment.spec.ts",
     "precommit": "npm run lint-fix && npm run pretty",
     "prepush": "npm run lint ",
-    "test": "jest --coverage",
+    "test": "NODE_ENV=test jest --coverage",
     "test:watch": "jest --watch"
   },
   "author": "Santosh Shinde",

@@ -8,6 +8,7 @@ import IntegrationHelpers from '../helpers/Integration-helpers';
 
 describe('status integration tests', () => {
     let app: express.Application;
+    const contentType: string = JSON.parse(process.env.APPLY_ENCRYPTION) ? 'text/html; charset=utf-8' : 'application/json; charset=utf-8';
 
     beforeAll(async() => {
         app = await IntegrationHelpers.getApp();
@@ -18,7 +19,7 @@ describe('status integration tests', () => {
         await request(app)
             .get('/api/status/time')
             .set('Accept', 'application/json')
-            .expect('Content-Type', 'application/json; charset=utf-8')
+            .expect('Content-Type', contentType)
             .expect((res: request.Response) => {
                 // eslint-disable-next-line no-console
                 console.log(res.text);
@@ -30,7 +31,7 @@ describe('status integration tests', () => {
         await request(app)
             .get('/api/status/system')
             .set('Accept', 'application/json')
-            .expect('Content-Type', 'application/json; charset=utf-8')
+            .expect('Content-Type', contentType)
             .expect(StatusCodes.OK);
     });
 
@@ -38,7 +39,7 @@ describe('status integration tests', () => {
         await request(app)
             .get('/api/status/usage')
             .set('Accept', 'application/json')
-            .expect('Content-Type', 'application/json; charset=utf-8')
+            .expect('Content-Type', contentType)
             .expect(StatusCodes.OK);
     });
 
@@ -46,7 +47,7 @@ describe('status integration tests', () => {
         await request(app)
             .get('/api/status/process')
             .set('Accept', 'application/json')
-            .expect('Content-Type', 'application/json; charset=utf-8')
+            .expect('Content-Type', contentType)
             .expect(StatusCodes.OK);
     });
 
@@ -54,7 +55,7 @@ describe('status integration tests', () => {
         await request(app)
             .get('/api/status/error')
             .set('Accept', 'application/json')
-            .expect('Content-Type', 'application/json; charset=utf-8')
+            .expect('Content-Type', contentType)
             .expect(StatusCodes.BAD_REQUEST);
     });
 
