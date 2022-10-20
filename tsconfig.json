@@ -1,35 +1,22 @@
 {
   "compilerOptions": {
     "lib": ["es2018"],
-    "rootDirs": ["tests", "src"],
     "target": "es2018",
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./build",
-    "skipLibCheck": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "baseUrl": ".",
-       "paths": {
-           "*": [
-               "node_modules/*",
-               "tests/*",
-           ]
-     }
+    "esModuleInterop": true
   },
   "include": [
     "src/**/*.ts",
-    ".env",
-    ".env.*",
-    "tests/**/*.ts",
     "index.js",
-    "jest.config.js",
     "config/*.config.js" // for *.config.js files
   ],
   "exclude": [
-    "node_modules",
+    "node_modules"
   ]
 }

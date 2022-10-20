@@ -37,7 +37,7 @@ const addErrorHandler = (
     if(environment.applyEncryption) {
       body = Crypto.encrypt(JSON.stringify(body), environment.secretKey);
     }
-    res.status(status).json(body);
+    res.status(status).send(body);
   }
   next();
 };

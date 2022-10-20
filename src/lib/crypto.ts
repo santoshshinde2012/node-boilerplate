@@ -76,13 +76,13 @@ export default class Crypto {
     const key = crypto.pbkdf2Sync(secretKey, Crypto.salt, Crypto.iterations, Crypto.keylen, Crypto.digest);
 
     // extract iv from encrypted data
-    const iv = bufferData.slice(bufferData.length - 28, bufferData.length - 16);
+    const iv = bufferData.subarray(bufferData.length - 28, bufferData.length - 16);
 
     // extract tag from encrypted data
-    const tag = bufferData.slice(bufferData.length - 16);
+    const tag = bufferData.subarray(bufferData.length - 16);
 
     // extract encrypted text from encrypted data
-    const text = bufferData.slice(0, bufferData.length - 28);
+    const text = bufferData.subarray(0, bufferData.length - 28);
 
     // AES 256 GCM Mode
     const decipher = crypto.createDecipheriv(Crypto.algorithm, key, iv);

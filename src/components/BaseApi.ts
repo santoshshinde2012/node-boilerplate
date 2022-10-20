@@ -25,7 +25,7 @@ export default abstract class BaseApi {
     public send(res: Response, statusCode: number = StatusCodes.OK): void {
       let obj = {};
       obj = res.locals.data;
-      if(environment.isProductionEnvironment()) {
+      if(environment.isProductionEnvironment() || environment.isTestEnvironment()) {
           logger.info(JSON.stringify(obj, null, 2));
       }
       if(environment.applyEncryption) {

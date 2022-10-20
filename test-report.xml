@@ -4,26 +4,30 @@
     <testCase name="Dummy Test Cases Verify Jest is working" duration="2"/>
   </file>
   <file path="/Users/apple/Documents/workspace/collections/node-boilerplate/tests/unit-tests/environments/environment.spec.ts">
-    <testCase name="Environment should get the current environment" duration="5"/>
-    <testCase name="Environment should check if environement is production or not" duration="0"/>
-    <testCase name="Environment should check if environement is dev or not" duration="1"/>
-    <testCase name="Environment should check if environement is staging or not" duration="0"/>
+    <testCase name="Environment should get the current environment" duration="6"/>
+    <testCase name="Environment should check if environement is production or not" duration="1"/>
+    <testCase name="Environment should check if environement is dev or not" duration="4"/>
+    <testCase name="Environment should check if environement is staging or not" duration="1"/>
     <testCase name="Environment should check if environement is test or not" duration="1"/>
     <testCase name="Environment should set the local as current environment" duration="1"/>
-    <testCase name="Environment should set the production as current environment" duration="0"/>
+    <testCase name="Environment should set the production as current environment" duration="1"/>
     <testCase name="Environment should set the staging as current environment" duration="1"/>
     <testCase name="Environment should set the local as default environment" duration="1"/>
   </file>
   <file path="/Users/apple/Documents/workspace/collections/node-boilerplate/tests/unit-tests/lib/crypto.spec.ts">
-    <testCase name="Crypto Lib (Encryption/Decryption) Testing for text" duration="9"/>
-    <testCase name="Crypto Lib (Encryption/Decryption) Testing for array" duration="4"/>
-    <testCase name="Crypto Lib (Encryption/Decryption) Testing for object" duration="5"/>
+    <testCase name="Crypto Lib (Encryption/Decryption) Testing for text" duration="11"/>
+    <testCase name="Crypto Lib (Encryption/Decryption) Testing for array" duration="13"/>
+    <testCase name="Crypto Lib (Encryption/Decryption) Testing for object" duration="4"/>
+  </file>
+  <file path="/Users/apple/Documents/workspace/collections/node-boilerplate/tests/integration-tests/app.integration.spec.ts">
+    <testCase name="status integration tests can get default route success" duration="58"/>
+    <testCase name="status integration tests can get default web route success" duration="7"/>
   </file>
   <file path="/Users/apple/Documents/workspace/collections/node-boilerplate/tests/integration-tests/status.integration.spec.ts">
-    <testCase name="status integration tests can get server time" duration="40"/>
-    <testCase name="status integration tests can get server system info" duration="12"/>
-    <testCase name="status integration tests can get server system usage" duration="9"/>
-    <testCase name="status integration tests can get server system process info" duration="19"/>
-    <testCase name="status integration tests should get the error" duration="9"/>
+    <testCase name="status integration tests can get server time" duration="128"/>
+    <testCase name="status integration tests can get server system info" duration="15"/>
+    <testCase name="status integration tests can get server system usage" duration="29"/>
+    <testCase name="status integration tests can get server system process info" duration="9"/>
+    <testCase name="status integration tests should get the error" duration="7"/>
   </file>
 </testExecutions>
