@@ -2,10 +2,10 @@
   "name": "node-typescript-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "build/src/server.js",
+  "main": "index.js",
   "types": "./types/global.d.ts",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon build/src/server.js",
     "build": "npm run lint && tsc -p . && cp .env ./build/.env && cp .env.local ./build/.env.local",
     "build:test": "npm run lint && tsc -p . && cp .env ./build/.env && cp .env.test ./build/.env.test",
     "build:prod": "npm run lint && tsc -p . && cp .env ./build/.env && cp .env.prod ./build/.env.prod",

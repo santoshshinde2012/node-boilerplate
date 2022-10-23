@@ -45,7 +45,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 - Clone the Application `git clone https://github.com/santoshshinde2012/node-boilerplate.git`
 - Install the dependencies `npm install`
-- Start the application `npm start`
+- Start the application `npm run start:local`
 
 ## Start The application in Production Mode
 
