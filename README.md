@@ -102,6 +102,8 @@ The swagger documentation is available at the following url `${host}/docs`:
 - `${host}/api/status/process` -  Return the process details in response
 - `${host}/api/status/error` - Return the error generated object in response
 
+![Swagger API Documentation](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/swagger-api-documentation.jpg?raw=true)
+
 ## Refrences
 
 - [Skeleton for Node.js Apps written in TypeScript](https://javascript.plainenglish.io/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30)
