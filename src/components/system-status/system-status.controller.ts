@@ -1,4 +1,4 @@
-import { Application, NextFunction, Request, Response } from 'express';
+import { Application, NextFunction, Request, Response, Router } from 'express';
 import * as os from 'os';
 import * as process from 'process';
 import {
@@ -14,28 +14,24 @@ import { IServerTimeResponse, IResourceUsageResponse, IProcessInfoResponse, ISys
  */
 export default class SystemStatusController extends BaseApi {
 
-    private basePath: string;
 
     /**
      * 
-     * @param basePath 
      */
-    constructor(basePath: string) {
+    constructor() {
         super();
-        this.basePath = basePath;
     }
 
     /**
      * 
-     * @param express 
      */
-    public register(express: Application): void {
-        express.use(this.basePath, this.router);
+    public register(): Router {
         this.router.get('/system', this.getSystemInfo);
         this.router.get('/time', this.getServerTime);
         this.router.get('/usage', this.getResourceUsage);
         this.router.get('/process', this.getProcessInfo);
         this.router.get('/error', this.getError);
+        return this.router;
     }
 
     /**

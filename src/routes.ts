@@ -1,12 +1,16 @@
-import * as express from 'express';
+import { Router } from 'express';
 import SystemStatusController from './components/system-status/system-status.controller';
 
 /**
  * Here, you can register routes by instantiating the controller.
- * @param app 
+ * 
  */
-export default function registerRoutes(app: express.Application): void {
+export default function registerRoutes(): Router {
+    const router = Router();
+
     // System Status Controller
-    const systemStatusController: SystemStatusController = new SystemStatusController('/api/status');
-    systemStatusController.register(app)
+    const systemStatusController: SystemStatusController = new SystemStatusController();
+    router.use('/api/status', systemStatusController.register());
+
+    return router;
 }
