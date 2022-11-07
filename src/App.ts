@@ -37,7 +37,7 @@ export default class App {
     private routes(): void {
         this.express.get('/', this.basePathRoute);
         this.express.get('/web', this.parseRequestHeader, this.basePathRoute);
-        registerRoutes(this.express);
+        this.express.use('/', registerRoutes());
     }
 
     /**

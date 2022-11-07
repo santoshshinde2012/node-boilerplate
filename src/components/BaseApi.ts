@@ -15,7 +15,7 @@ export default abstract class BaseApi {
       this.router = Router();
     }
 
-    public abstract register(express: Application): void;
+    public abstract register(): void;
 
     /**
      * Global method to send API response 
