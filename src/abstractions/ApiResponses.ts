@@ -1,3 +1,3 @@
 export interface IStandardResponse {
-    success: boolean;
+	success: boolean;
 }
