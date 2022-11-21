@@ -14,7 +14,7 @@
   },
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": ["error"],
+    "prettier/prettier": ["off", { "singleQuote": true }],
     "semi": ["error", "always"],
     "object-curly-spacing": ["error", "always"],
     "camelcase": "off",
