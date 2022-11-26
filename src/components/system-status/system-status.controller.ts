@@ -26,11 +26,11 @@ export default class SystemStatusController extends BaseApi {
 	 *
 	 */
 	public register(): Router {
-		this.router.get('/system', this.getSystemInfo);
-		this.router.get('/time', this.getServerTime);
-		this.router.get('/usage', this.getResourceUsage);
-		this.router.get('/process', this.getProcessInfo);
-		this.router.get('/error', this.getError);
+		this.router.get('/system', this.getSystemInfo.bind(this));
+		this.router.get('/time', this.getServerTime.bind(this));
+		this.router.get('/usage', this.getResourceUsage.bind(this));
+		this.router.get('/process', this.getProcessInfo.bind(this));
+		this.router.get('/error', this.getError.bind(this));
 		return this.router;
 	}
 
