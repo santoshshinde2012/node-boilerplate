@@ -41,4 +41,21 @@ describe('ErrorHandler middleware', () => {
         expect(mockResponse.status).toBeCalledWith(status);
     });
 
+    test('with 200 status code', async () => {
+        const status: number = 200;
+        addErrorHandler({
+            status,
+            success: false,
+            fields: {
+                name: {
+                    message: ''
+                }
+            },
+            name: '',
+            message: ''
+        }, mockRequest as Request, mockResponse as Response, nextFunction);
+
+        expect(mockResponse.status).toBeCalledWith(status);
+    });
+
 })
