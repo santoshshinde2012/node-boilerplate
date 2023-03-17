@@ -1,8 +1,8 @@
-FROM node:latest
-RUN mkdir /app
-WORKDIR /node-boilerplate 
-COPY package.json  /app/
-RUN npm install 
-COPY .  /app/
+FROM node:16.17.0-bullseye-slim
+ENV NODE_ENV production
+WORKDIR /usr/src/app
+COPY --chown=node:node . /usr/src/app
+RUN npm ci --only=production
+USER node
 EXPOSE 8080 
 CMD npm start
