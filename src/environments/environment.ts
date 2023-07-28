@@ -19,9 +19,9 @@ class Environment implements IEnvironment {
 	 * @param NODE_ENV
 	 */
 	constructor(NODE_ENV?: string) {
-		this.env = NODE_ENV || process.env.NODE_ENV || Environments.DEV;
+		this.env = NODE_ENV || process.env.NODE_ENV || Environments.LOCAL;
 		this.setEnvironment(this.env);
-		const port: string | undefined | number = process.env.PORT || 3146;
+		const port: string | undefined | number = process.env.PORT || 8080;
 		this.port = Number(port);
 		this.applyEncryption = JSON.parse(process.env.APPLY_ENCRYPTION);
 		this.secretKey = process.env.SECRET_KEY;
@@ -79,7 +79,6 @@ class Environment implements IEnvironment {
 	 */
 	public isDevEnvironment(): boolean {
 		return (
-			this.getCurrentEnvironment() === Environments.DEV ||
 			this.getCurrentEnvironment() === Environments.LOCAL
 		);
 	}

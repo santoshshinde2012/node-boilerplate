@@ -8,4 +8,4 @@ services:
         - .:/usr/app/
         - /usr/app/node_modules
       ports:
-        - "3146:3146"
+        - "8080:8080"

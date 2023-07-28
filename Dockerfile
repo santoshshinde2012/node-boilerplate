@@ -1,11 +1,13 @@
-FROM node:16.17.0-bullseye-slim
+FROM node:18
 ENV NODE_ENV production
-WORKDIR /usr/src/app
-COPY --chown=node:node package.json /usr/src/app
-COPY --chown=node:node .env /usr/src/app
-COPY --chown=node:node swagger.json /usr/src/app
-COPY --chown=node:node src/ /usr/src/app
+WORKDIR /usr/app
+COPY package.json ./
+COPY tsconfig.json ./
+COPY swagger.json ./
+COPY .env ./
+COPY .env.prod ./
+COPY src/ ./src
 RUN npm install --ignore-scripts
-USER node
+RUN npm run build:prod
 EXPOSE 8080 
 CMD npm start
