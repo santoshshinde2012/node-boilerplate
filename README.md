@@ -93,7 +93,7 @@ To access the `applyEncryption` attribute from `Envionment` class to Response Ha
 
 The swagger documentation is available at the following url `${host}/docs`:  
 
-[http://localhost:3146/docs](http://localhost:3146/docs)
+[http://localhost:8080/docs](http://localhost:8080/docs)
 ## Default System Health Status API
 
 - `${host}/api/status/system` - Return the system information in response
