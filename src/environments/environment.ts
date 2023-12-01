@@ -14,17 +14,50 @@ class Environment implements IEnvironment {
 
 	public env: string;
 
+	public dbPort: number;
+
+	public dbPassword: string;
+
+	public dbUser: string;
+
+	public dbHost: string;
+
+	public dbName: string;
+
+	public clientOriginUrl: string;
+
+	public auth0Domain: string;
+	
+	public auth0Audience: string;
+
+
 	/**
 	 *
 	 * @param NODE_ENV
 	 */
 	constructor(NODE_ENV?: string) {
+
+		//set environment
 		this.env = NODE_ENV || process.env.NODE_ENV || Environments.LOCAL;
 		this.setEnvironment(this.env);
+
+		//set local api settings
 		const port: string | undefined | number = process.env.PORT || 8080;
 		this.port = Number(port);
 		this.applyEncryption = JSON.parse(process.env.APPLY_ENCRYPTION);
 		this.secretKey = process.env.SECRET_KEY;
+
+		//set database configuration
+		this.dbHost = process.env.DB_HOST || '';
+		this.dbPort = Number(process.env.DB_PORT || '');
+		this.dbUser = process.env.DB_USER || '';
+		this.dbName = process.env.DB_NAME || '';
+		this.dbName = process.env.DB_PASSWORD || '';
+
+		//set auth configuration
+		this.auth0Audience = process.env.AUTH0_AUDIENCE || '';
+		this.auth0Domain = process.env.AUTH0_DOMAIN || '';
+		this.clientOriginUrl = process.env.CLIENT_ORIGIN_URL || '';
 	}
 
 	/**

@@ -1,0 +1,5 @@
+const path = require('path');
+
+module.exports = {
+    'migrations-path': path.reoslve('src/database', 'migrations')
+}

@@ -1,4 +1,10 @@
 interface IEnvironment {
+	dbName: string;
+	dbPassword: string;
+	dbHost: string;
+	clientOriginUrl: string;
+	auth0Audience: string;
+	auth0Domain: string;
 	port: number;
 	secretKey: string;
 	applyEncryption: boolean;
