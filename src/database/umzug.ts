@@ -1,8 +1,10 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Umzug, SequelizeStorage } from 'umzug';
-import environment from '../environment';
+import Environment from '../environments/environment';
 
-const { dbName, dbUser, dbPassword, dbHost } = environment;
+const { dbName, dbUser, dbPassword, dbHost } = new Environment();
+
+console.log(dbName);
 
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
 	host: dbHost,

@@ -6,7 +6,7 @@ enum Environments {
 }
 
 enum EnvironmentFile {
-	LOCAL = '.env',
+	LOCAL = '.env.local',
 	PRODUCTION = '.env.prod',
 	TEST = '.env.test',
 	STAGING = '.env.stag',

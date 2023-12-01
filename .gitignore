@@ -12,6 +12,10 @@ coverage/clover.xml
 logs/
 
 # don't check in  env files
+.env
+.env.test
+.env.local
+.env.test
 .env.prod
-.env.staging
+.env.stage
 **/.DS_Store

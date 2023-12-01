@@ -37,6 +37,8 @@ class Environment implements IEnvironment {
 	constructor(NODE_ENV?: string) {
 		// set environment
 		this.env = NODE_ENV || process.env.NODE_ENV || Environments.LOCAL;
+		console.log(this.env);
+		console.log('inside environment class');
 		this.setEnvironment(this.env);
 
 		// set local api settings
@@ -50,7 +52,7 @@ class Environment implements IEnvironment {
 		this.dbPort = Number(process.env.DB_PORT || '');
 		this.dbUser = process.env.DB_USER || '';
 		this.dbName = process.env.DB_NAME || '';
-		this.dbName = process.env.DB_PASSWORD || '';
+		this.dbPassword = process.env.DB_PASSWORD || '';
 
 		// set auth configuration
 		this.auth0Audience = process.env.AUTH0_AUDIENCE || '';
