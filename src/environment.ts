@@ -1,4 +1,4 @@
-import Environment from "./environments/environment";
+import Environment from './environments/environment';
 
 const environment = new Environment();
 
