@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "types": "./types/global.d.ts",
   "scripts": {
     "start": "node build/src/server.js",
     "dev": "nodemon index.js",
@@ -19,7 +18,7 @@
     "lint-fix": "eslint --fix src/**/*.ts",
     "pretty": "prettier --write \"src/**/*.ts\"",
     "prepare": "husky install",
-    "test:custom": "npm test --  tests/unit-tests/environments/environment.spec.ts",
+    "test:custom": "npm test --  tests/unit-tests/lib/crypto.spec.ts",
     "precommit": "npm run lint-fix && npm run pretty",
     "prepush": "npm run lint ",
     "test": "NODE_ENV=test jest --coverage",

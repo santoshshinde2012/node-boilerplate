@@ -1,12 +1,8 @@
 import * as http from 'http';
 import { AddressInfo } from 'net';
-import { setGlobalEnvironment } from './global';
 import App from './App';
-import Environment from './environments/environment';
 import logger from './lib/logger';
 
-const env: Environment = new Environment();
-setGlobalEnvironment(env);
 const app: App = new App();
 let server: http.Server;
 
@@ -20,17 +16,17 @@ function serverError(error: NodeJS.ErrnoException): void {
 
 function serverListening(): void {
 	const addressInfo: AddressInfo = <AddressInfo>server.address();
-	logger.info(`Listening on ${addressInfo.address}:${env.port}`);
+	logger.info(`Listening on ${addressInfo.address}:${process.env.port}`);
 }
 
 app.init()
 	.then(() => {
-		app.express.set('port', env.port);
+		app.express.set('port', process.env.port);
 
 		server = app.httpServer;
 		server.on('error', serverError);
 		server.on('listening', serverListening);
-		server.listen(env.port);
+		server.listen(process.env.port);
 	})
 	.catch((err: Error) => {
 		logger.info('app.init error');

@@ -8,7 +8,7 @@ import IntegrationHelpers from '../helpers/Integration-helpers';
 
 describe('status integration tests', () => {
     let app: express.Application;
-    const contentType: string = JSON.parse(process.env.APPLY_ENCRYPTION) ? 'text/html; charset=utf-8' : 'application/json; charset=utf-8';
+    const contentType: string = process.env.APPLY_ENCRYPTION && process.env.SECRET_KEY ? 'text/html; charset=utf-8' : 'application/json; charset=utf-8';
 
     beforeAll(async() => {
         app = await IntegrationHelpers.getApp();
@@ -20,10 +20,6 @@ describe('status integration tests', () => {
             .get('/api/status/time')
             .set('Accept', 'application/json')
             .expect('Content-Type', contentType)
-            .expect((res: request.Response) => {
-                // eslint-disable-next-line no-console
-                console.log(res.text);
-            })
             .expect(StatusCodes.OK);
     });
 

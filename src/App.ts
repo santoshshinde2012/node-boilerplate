@@ -7,6 +7,8 @@ import swaggerDocument from '../swagger.json';
 import registerRoutes from './routes';
 import addErrorHandler from './middleware/error-handler';
 
+const swaggerEnabledEnvironments: string[]  = ['local', 'dev', 'test'];
+
 export default class App {
 	public express: express.Application;
 
@@ -26,7 +28,7 @@ export default class App {
 		this.express.use(addErrorHandler);
 
 		// In a development/test environment, Swagger will be enabled.
-		if (environment.isDevEnvironment() || environment.isTestEnvironment()) {
+		if (swaggerEnabledEnvironments.includes(process.env.NODE_ENV)) {
 			this.setupSwaggerDocs();
 		}
 	}

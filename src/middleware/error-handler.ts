@@ -28,12 +28,8 @@ const addErrorHandler = (
 			stack: '',
 		};
 
-		// If the environment is production then no need to send error stack trace
-		if (environment && environment.isDevEnvironment()) {
-			body.stack = err.stack;
-		}
-		if (environment && environment.applyEncryption) {
-			body = Crypto.encrypt(JSON.stringify(body), environment.secretKey);
+		if (process.env.APPLY_ENCRYPTION && process.env.SECRET_KEY) {
+			body = Crypto.encrypt(JSON.stringify(body), process.env.SECRET_KEY);
 		}
 		res.status(status);
 		res.send(body);
