@@ -96,11 +96,11 @@ The swagger documentation is available at the following url `${host}/docs`:
 [http://localhost:8080/docs](http://localhost:8080/docs)
 ## Default System Health Status API
 
-- `${host}/api/status/system` - Return the system information in response
-- `${host}/api/status/time` - Return the current time in response
-- `${host}/api/status/usage` - Return the process and system memory usage in response
-- `${host}/api/status/process` -  Return the process details in response
-- `${host}/api/status/error` - Return the error generated object in response
+- `${host}/api/system/info` - Return the system information in response
+- `${host}/system/time` - Return the current time in response
+- `${host}/system/usage` - Return the process and system memory usage in response
+- `${host}/system/process` -  Return the process details in response
+- `${host}/system/error` - Return the error generated object in response
 
 ![Swagger API Documentation](https://github.com/santoshshinde2012/node-boilerplate/blob/master/wiki/swagger-api-documentation.jpg?raw=true)
 

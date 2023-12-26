@@ -11,7 +11,7 @@ export default function registerRoutes(): Router {
 	// System Status Controller
 	const systemStatusController: SystemStatusController =
 		new SystemStatusController();
-	router.use('/api/status', systemStatusController.register());
+	router.use('/system', systemStatusController.register());
 
 	return router;
 }
