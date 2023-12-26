@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/unit-tests/dummy.spec.ts">
-    <testCase name="Dummy Test Cases Verify Jest is working" duration="4"/>
+    <testCase name="Dummy Test Cases Verify Jest is working" duration="2"/>
   </file>
   <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/unit-tests/lib/crypto.spec.ts">
-    <testCase name="Crypto Lib (Encryption/Decryption) Testing for text" duration="6"/>
+    <testCase name="Crypto Lib (Encryption/Decryption) Testing for text" duration="7"/>
     <testCase name="Crypto Lib (Encryption/Decryption) Testing for array" duration="2"/>
     <testCase name="Crypto Lib (Encryption/Decryption) Testing for object" duration="2"/>
   </file>
@@ -13,14 +13,14 @@
     <testCase name="ErrorHandler middleware with 200 status code" duration="0"/>
   </file>
   <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/integration-tests/app.integration.spec.ts">
-    <testCase name="status integration tests can get default route success" duration="13"/>
-    <testCase name="status integration tests can get default web route success" duration="2"/>
+    <testCase name="status integration tests can get default route success" duration="14"/>
+    <testCase name="status integration tests can get default web route success" duration="3"/>
   </file>
   <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/integration-tests/status.integration.spec.ts">
-    <testCase name="status integration tests can get server time" duration="17"/>
+    <testCase name="status integration tests can get server time" duration="14"/>
     <testCase name="status integration tests can get server system info" duration="4"/>
-    <testCase name="status integration tests can get server system usage" duration="2"/>
-    <testCase name="status integration tests can get server system process info" duration="3"/>
-    <testCase name="status integration tests should get the error" duration="4"/>
+    <testCase name="status integration tests can get server system usage" duration="1"/>
+    <testCase name="status integration tests can get server system process info" duration="1"/>
+    <testCase name="status integration tests should get the error" duration="3"/>
   </file>
 </testExecutions>
