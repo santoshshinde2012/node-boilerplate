@@ -7,7 +7,7 @@ import swaggerDocument from '../swagger.json';
 import registerRoutes from './routes';
 import addErrorHandler from './middleware/error-handler';
 
-const swaggerEnabledEnvironments: string[]  = ['local', 'dev', 'test'];
+const swaggerEnabledEnvironments: string[] = ['local', 'dev', 'test'];
 
 export default class App {
 	public express: express.Application;
