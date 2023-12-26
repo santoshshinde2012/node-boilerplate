@@ -16,17 +16,17 @@ function serverError(error: NodeJS.ErrnoException): void {
 
 function serverListening(): void {
 	const addressInfo: AddressInfo = <AddressInfo>server.address();
-	logger.info(`Listening on ${addressInfo.address}:${process.env.port}`);
+	logger.info(`Listening on ${addressInfo.address}:${process.env.PORT}`);
 }
 
 app.init()
 	.then(() => {
-		app.express.set('port', process.env.port);
+		app.express.set('port', process.env.PORT);
 
 		server = app.httpServer;
 		server.on('error', serverError);
 		server.on('listening', serverListening);
-		server.listen(process.env.port);
+		server.listen(process.env.PORT);
 	})
 	.catch((err: Error) => {
 		logger.info('app.init error');

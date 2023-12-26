@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node build/src/server.js",
     "dev": "nodemon index.js",
-    "build": "tsc -p . && cp .env ./build/.env && cp .env.local ./build/.env.local",
+    "build": "tsc -p . && cp package.json ./build/package.json && cp .env ./build/.env && cp .env.local ./build/.env.local",
     "build:test": "npm run lint && tsc -p . && cp .env ./build/.env && cp .env.test ./build/.env.test",
     "build:prod": "tsc -p . && cp .env ./build/.env && cp .env.prod ./build/.env.prod",
     "build:stag": "tsc -p . && cp .env ./build/.env && cp .env.stag ./build/.env.stag",
@@ -14,6 +14,7 @@
     "start:test": "NODE_ENV=test node build/src/server.js",
     "start:staging": "NODE_ENV=staging node build/src/server.js",
     "start:prod": "NODE_ENV=production node build/src/server.js",
+    "prod": "node build/src/server.js",
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
     "pretty": "prettier --write \"src/**/*.ts\"",
