@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node build/src/server.js",
     "dev": "nodemon index.js",
-    "build": "tsc -p . && cp package.json ./build/package.json && cp package-lock.json ./build/package-lock.json && cp .env ./build/.env && cp .env.local ./build/.env.local",
+    "build": "tsc -p . && cp package.json ./build/package.json && cp package-lock.json ./build/package-lock.json && cp .env ./build/.env",
     "build:test": "npm run lint && tsc -p . && cp .env ./build/.env && cp .env.test ./build/.env.test",
     "build:prod": "tsc -p . && cp .env ./build/.env && cp .env.prod ./build/.env.prod",
     "build:stag": "tsc -p . && cp .env ./build/.env && cp .env.stag ./build/.env.stag",
