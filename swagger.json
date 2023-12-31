@@ -6,14 +6,14 @@
         "title": "Node Boilerplate"
     },
     "host": "",
-    "basePath": "/api",
+    "basePath": "",
     "tags": [{
         "name": "node-boilerplate",
         "description": "Node Typescript Boilerplate"
     }],
     "schemes": ["http", "https"],
     "paths": {
-        "/status/system": {
+        "/system/info": {
             "get": {
                 "tags": ["node-boilerplate"],
                 "summary": "get system status",
@@ -29,7 +29,7 @@
                 "security": []
             }
         },
-        "/status/time": {
+        "/system/time": {
             "get": {
                 "tags": ["node-boilerplate"],
                 "summary": "get server time",
@@ -45,7 +45,7 @@
                 "security": []
             }
         },
-        "/status/usage": {
+        "/system/usage": {
             "get": {
                 "tags": ["node-boilerplate"],
                 "summary": "get server usage",
@@ -61,7 +61,7 @@
                 "security": []
             }
         },
-        "/status/process": {
+        "/system/process": {
             "get": {
                 "tags": ["node-boilerplate"],
                 "summary": "get server process",

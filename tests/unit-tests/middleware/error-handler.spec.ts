@@ -38,7 +38,7 @@ describe('ErrorHandler middleware', () => {
             message: ''
         }, mockRequest as Request, mockResponse as Response, nextFunction);
 
-        expect(mockResponse.status).toBeCalledWith(status);
+        expect(mockResponse.status).toHaveBeenCalledWith(status);
     });
 
     test('with 200 status code', async () => {
@@ -55,7 +55,44 @@ describe('ErrorHandler middleware', () => {
             message: ''
         }, mockRequest as Request, mockResponse as Response, nextFunction);
 
-        expect(mockResponse.status).toBeCalledWith(status);
+        expect(mockResponse.status).toHaveBeenCalledWith(status);
+    });
+
+    
+    test('with 200 status code', async () => {
+        const status: number = 200;
+        addErrorHandler({
+            status,
+            success: false,
+            fields: {
+                name: {
+                    message: ''
+                }
+            },
+            name: '',
+            message: ''
+        }, mockRequest as Request, mockResponse as Response, nextFunction);
+
+        expect(mockResponse.status).toHaveBeenCalledWith(status);
+    });
+
+    test('with 200 status code and updated env variables', async () => {
+        process.env.APPLY_ENCRYPTION = 'true';
+        process.env.SECRET_KEY = 'key';
+        const status: number = 200;
+        addErrorHandler({
+            status,
+            success: false,
+            fields: {
+                name: {
+                    message: ''
+                }
+            },
+            name: '',
+            message: ''
+        }, mockRequest as Request, mockResponse as Response, nextFunction);
+
+        expect(mockResponse.status).toHaveBeenCalledWith(status);
     });
 
 })

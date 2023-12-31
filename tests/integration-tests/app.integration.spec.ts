@@ -19,10 +19,6 @@ describe('status integration tests', () => {
             .get('/')
             .set('Accept', 'application/json')
             .expect('Content-Type', 'application/json; charset=utf-8')
-            .expect((res: request.Response) => {
-                // eslint-disable-next-line no-console
-                console.log(res.text);
-            })
             .expect(StatusCodes.OK);
     });
 
@@ -31,10 +27,6 @@ describe('status integration tests', () => {
             .get('/web')
             .set('Accept', 'application/json')
             .expect('Content-Type', 'application/json; charset=utf-8')
-            .expect((res: request.Response) => {
-                // eslint-disable-next-line no-console
-                console.log(res.text);
-            })
             .expect(StatusCodes.OK);
     });
 });
