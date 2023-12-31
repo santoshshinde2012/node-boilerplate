@@ -1,4 +1,4 @@
-import { Application, NextFunction, Request, Response, Router } from 'express';
+import { NextFunction, Request, Response, Router } from 'express';
 import * as os from 'os';
 import * as process from 'process';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
