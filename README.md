@@ -45,14 +45,14 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 - Clone the Application `git clone https://github.com/santoshshinde2012/node-boilerplate.git`
 - Install the dependencies `npm install`
-- Start the application `npm run start:local`
+- Start the application `npm run dev`
 
 ## Start The application in Production Mode
 
 - Install the dependencies `npm install`
 - Create the build `npm run build`
-- Start the application `npm run start:production`
-- Before starting make sure to creat prod environment `.env.prod` file
+- Start the application `npm run start`
+- Before starting make sure to update your `.env` values for your refrence just check `.env.example`
 
 
 ## Project Structure
@@ -63,7 +63,6 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 | **src/**                          | Source files |
 | **src/abstractions**              | Abstarct classes and Interfaces  |
 | **src/components**                | REST API Components & Controllers  |
-| **src/environments**              | Application Environments Handling utility  |
 | **src/lib**                       | Reusable utilises and library source code like a logger|
 | **src/middleware/**               | Express Middlewares like error handler feature |
 | **build/**                        | Compiled source files will be placed here |
@@ -80,14 +79,6 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 ## Encryption
 
 Set the `APPLY_ENCRYPTION` environment variable to `true` to enable encryption.
-
-## Global Environment Object
-
-You can directly access the environment attributes in any component/file using global environment object. For more details please check file `src/global.ts`.
-
-*Example*
-
-To access the `applyEncryption` attribute from `Envionment` class to Response Handler, write `environment.applyEncryption`;
 
 ## Swagger API Documentation
 
