@@ -19,7 +19,7 @@ const addErrorHandler = (
         \nREQUEST PARAMS:\n${util.inspect(req.params)}
         \nREQUEST QUERY:\n${util.inspect(req.query)}
         \nBODY:\n${util.inspect(req.body)}`);
-		let body: IError | String = {
+		let body: IError | string = {
 			fields: err.fields,
 			message: err.message || 'An error occurred during the request.',
 			name: err.name,
