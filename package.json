@@ -9,10 +9,10 @@
     "build": "tsc -p . && cp package.json ./build/package.json && cp package-lock.json ./build/package-lock.json && cp .env ./build/.env",
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
-    "pretty": "prettier --write \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "prepare": "husky install",
     "test:custom": "npm test --  tests/unit-tests/lib/crypto.spec.ts",
-    "precommit": "npm run lint-fix && npm run pretty",
+    "precommit": "npm run lint-fix && npm run format",
     "prepush": "npm run lint ",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
