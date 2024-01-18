@@ -18,7 +18,8 @@ export default class Mailer {
 			});
 
 			// send mail with defined transport object
-			const info = await transporter.sendMail({
+			// info
+			await transporter.sendMail({
 				from: process.env.MAIL_EMAIL, // sender address
 				to, // list of receivers
 				subject, // Subject line
