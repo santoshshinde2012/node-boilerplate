@@ -26,9 +26,9 @@ export default class Mailer {
 				html: body, // html body
 			});
 
-			console.log('Message sent: %s', info.messageId);
+			// console.log('Message sent: %s', info.messageId);
 		} catch (error) {
-			console.log('Problem when trying send email', error);
+			// console.log('Problem when trying send email', error);
 		}
 	}
 }
