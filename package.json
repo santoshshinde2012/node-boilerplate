@@ -10,7 +10,7 @@
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
     "format": "prettier --write \"src/**/*.ts\"",
-    "prepare": "husky install",
+    "prepare": "husky",
     "test:custom": "npm test --  tests/unit-tests/lib/crypto.spec.ts",
     "precommit": "npm run lint-fix && npm run format",
     "prepush": "npm run lint ",
