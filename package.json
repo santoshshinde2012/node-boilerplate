@@ -21,7 +21,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@types/express": "^4.17.21",
-    "@types/node": "^20.11.10",
+    "@types/node": "^20.11.16",
     "@types/winston": "^2.4.4",
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
-    "@types/jest": "^29.5.11",
+    "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
     "@types/swagger-ui-express": "^4.1.6",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
@@ -43,7 +43,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prettier": "^5.1.3",
-    "husky": "^9.0.7",
+    "husky": "^9.0.10",
     "jest": "^29.7.0",
     "jest-sonar-reporter": "^2.0.0",
     "nodemon": "^3.0.3",
