@@ -18,8 +18,7 @@ jobs:
   CI:
     strategy:
       matrix:
-        # node-version: [10.x, 12.x, 14.x]
-        node-version: [14.x]
+        node-version: [18.x]
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Code
@@ -28,6 +27,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Clean Cache
+      run: npm cache clean --force
     - name: Install package
       run: npm install
     - name: Build
