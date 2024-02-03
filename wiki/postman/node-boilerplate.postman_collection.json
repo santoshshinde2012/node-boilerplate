@@ -1,0 +1,112 @@
+{
+	"info": {
+		"name": "node-boilerplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "system",
+			"item": [
+				{
+					"name": "info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/system/info",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"system",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "time",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/system/time",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"system",
+								"time"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/system/usage",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"system",
+								"usage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "process",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/system/process",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"system",
+								"process"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
