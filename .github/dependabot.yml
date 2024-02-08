@@ -9,7 +9,7 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
-    target-branch: "dev"
+    target-branch: "master"
     # Increase the version requirements
     # only when required
     versioning-strategy: increase-if-necessary

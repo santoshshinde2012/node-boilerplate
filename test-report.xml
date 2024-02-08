@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/unit-tests/lib/crypto.spec.ts">
-    <testCase name="Crypto Lib (Encryption/Decryption) Testing for text" duration="5"/>
+    <testCase name="Crypto Lib (Encryption/Decryption) Testing for text" duration="4"/>
     <testCase name="Crypto Lib (Encryption/Decryption) Testing for array" duration="2"/>
-    <testCase name="Crypto Lib (Encryption/Decryption) Testing for object" duration="2"/>
+    <testCase name="Crypto Lib (Encryption/Decryption) Testing for object" duration="1"/>
   </file>
   <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/unit-tests/dummy.spec.ts">
     <testCase name="Dummy Test Cases Verify Jest is working" duration="3"/>
   </file>
+  <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/unit-tests/lib/logger.spec.ts">
+    <testCase name="Logger Lib should create a new log directory if one doesn&apos;t already exist" duration="8"/>
+  </file>
   <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/unit-tests/components/SystemStatusController.spec.ts">
     <testCase name="System Status Controller test getError method" duration="2"/>
     <testCase name="System Status Controller test getSystemInfo method" duration="3"/>
-    <testCase name="System Status Controller test getSystemInfo method with updated env variables" duration="7"/>
+    <testCase name="System Status Controller test getSystemInfo method with updated env variables" duration="2"/>
     <testCase name="System Status Controller test getSystemInfo method with exception" duration="0"/>
     <testCase name="System Status Controller test getServerTime method" duration="1"/>
     <testCase name="System Status Controller test getServerTime method with exception" duration="0"/>
     <testCase name="System Status Controller test getResourceUsage method" duration="1"/>
     <testCase name="System Status Controller test getResourceUsage method with exception" duration="0"/>
-    <testCase name="System Status Controller test getProcessInfo method" duration="1"/>
-    <testCase name="System Status Controller test getProcessInfo method with exception" duration="0"/>
-  </file>
-  <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/integration-tests/app.integration.spec.ts">
-    <testCase name="status integration tests can get default route success" duration="15"/>
-    <testCase name="status integration tests can get default web route success" duration="3"/>
-  </file>
-  <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/unit-tests/lib/logger.spec.ts">
-    <testCase name="Logger Lib should create a new log directory if one doesn&apos;t already exist" duration="8"/>
+    <testCase name="System Status Controller test getProcessInfo method" duration="0"/>
+    <testCase name="System Status Controller test getProcessInfo method with exception" duration="2"/>
   </file>
   <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/unit-tests/middleware/error-handler.spec.ts">
     <testCase name="ErrorHandler middleware with 0 status code" duration="3"/>
-    <testCase name="ErrorHandler middleware with 200 status code" duration="0"/>
+    <testCase name="ErrorHandler middleware with 200 status code" duration="1"/>
     <testCase name="ErrorHandler middleware with 200 status code" duration="0"/>
     <testCase name="ErrorHandler middleware with 200 status code and updated env variables" duration="2"/>
   </file>
+  <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/integration-tests/app.integration.spec.ts">
+    <testCase name="status integration tests can get default route success" duration="14"/>
+    <testCase name="status integration tests can get default web route success" duration="2"/>
+  </file>
   <file path="/Users/santosh/Documents/workspace/personal/node-boilerplate/tests/integration-tests/status.integration.spec.ts">
-    <testCase name="status integration tests can get server time" duration="18"/>
-    <testCase name="status integration tests can get server system info" duration="5"/>
-    <testCase name="status integration tests can get server system usage" duration="2"/>
-    <testCase name="status integration tests can get server system process info" duration="2"/>
-    <testCase name="status integration tests should get the error" duration="3"/>
+    <testCase name="status integration tests can get server time" duration="15"/>
+    <testCase name="status integration tests can get server system info" duration="4"/>
+    <testCase name="status integration tests can get server system usage" duration="9"/>
+    <testCase name="status integration tests can get server system process info" duration="3"/>
+    <testCase name="status integration tests should get the error" duration="4"/>
   </file>
 </testExecutions>
