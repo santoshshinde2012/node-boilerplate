@@ -1,4 +1,4 @@
-FROM node:iron-bookworm-slim
+FROM node:20-bookworm-slim AS base
 
 # Create a new user named "nodeuser"
 RUN useradd --user-group --create-home --system --skel /dev/null --shell /bin/false nodeuser
