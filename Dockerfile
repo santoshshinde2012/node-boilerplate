@@ -12,9 +12,8 @@ COPY package.json ./
 COPY tsconfig.json ./
 COPY swagger.json ./
 COPY .env ./
-COPY .env.prod ./
 COPY src/ ./src
 RUN npm install --ignore-scripts
-RUN npm run build:prod
+RUN npm run build
 EXPOSE 8080 
 CMD npm start
