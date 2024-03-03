@@ -1,20 +1,12 @@
 import 'jest';
-import express from 'express';
 import { NextFunction, Request, Response } from 'express';
 import addErrorHandler from '../../../src/middleware/error-handler';
-import IntegrationHelpers from '../../helpers/Integration-helpers';
 import { StatusCodes } from 'http-status-codes';
 
 describe('ErrorHandler middleware', () => {
     let mockRequest: Partial<Request>;
     let mockResponse: Partial<Response>;
     let nextFunction: NextFunction = jest.fn();
-
-    let app: express.Application;
-    
-    beforeAll(async() => {
-        app = await IntegrationHelpers.getApp();
-    });
 
     beforeEach(() => {
         mockRequest = {};

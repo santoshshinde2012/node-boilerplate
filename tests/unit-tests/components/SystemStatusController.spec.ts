@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response, Router, RouterOptions } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import SystemStatusController from '../../../src/components/system-status/system-status.controller';
 import BaseApi from '../../../src/components/BaseApi';
 import Crypto from '../../../src/lib/crypto';

@@ -8,10 +8,15 @@ import SystemStatusController from './components/system-status/system-status.con
 export default function registerRoutes(): Router {
 	const router = Router();
 
-	// System Status Controller
-	const systemStatusController: SystemStatusController =
-		new SystemStatusController();
-	router.use('/system', systemStatusController.register());
+	const controllers = [
+		new SystemStatusController(),
+	];
+
+	// Dynamically register routes for each controller
+	controllers.forEach((controller) => {
+		// make sure each controller has basePath attribute and register() method
+		router.use(`/v1/${controller.basePath}`, controller.register());
+	});
 
 	return router;
 }

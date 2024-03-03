@@ -9,6 +9,7 @@ import IntegrationHelpers from '../helpers/Integration-helpers';
 describe('status integration tests', () => {
     let app: express.Application;
     const contentType: string = process.env.APPLY_ENCRYPTION && process.env.SECRET_KEY ? 'text/html; charset=utf-8' : 'application/json; charset=utf-8';
+    let basePath : string = '/v1/system';
 
     beforeAll(async() => {
         app = await IntegrationHelpers.getApp();
@@ -17,7 +18,7 @@ describe('status integration tests', () => {
 
     it('can get server time', async () => {
         await request(app)
-            .get('/system/time')
+            .get(`${basePath}/time`)
             .set('Accept', 'application/json')
             .expect('Content-Type', contentType)
             .expect(StatusCodes.OK);
@@ -25,7 +26,7 @@ describe('status integration tests', () => {
 
     it('can get server system info', async () => {
         await request(app)
-            .get('/system/info')
+            .get(`${basePath}/info`)
             .set('Accept', 'application/json')
             .expect('Content-Type', contentType)
             .expect(StatusCodes.OK);
@@ -33,7 +34,7 @@ describe('status integration tests', () => {
 
     it('can get server system usage', async () => {
         await request(app)
-            .get('/system/usage')
+            .get(`${basePath}/usage`)
             .set('Accept', 'application/json')
             .expect('Content-Type', contentType)
             .expect(StatusCodes.OK);
@@ -41,7 +42,7 @@ describe('status integration tests', () => {
 
     it('can get server system process info', async () => {
         await request(app)
-            .get('/system/process')
+            .get(`${basePath}/process`)
             .set('Accept', 'application/json')
             .expect('Content-Type', contentType)
             .expect(StatusCodes.OK);
@@ -49,7 +50,7 @@ describe('status integration tests', () => {
 
     it('should get the error', async () => {
         await request(app)
-            .get('/system/error')
+            .get(`${basePath}/error`)
             .set('Accept', 'application/json')
             .expect('Content-Type', contentType)
             .expect(StatusCodes.BAD_REQUEST);
