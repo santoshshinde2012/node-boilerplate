@@ -15,6 +15,8 @@ import {
  * Status controller
  */
 export default class SystemStatusController extends BaseApi {
+
+	public basePath: string = 'system';
 	/**
 	 *
 	 */
