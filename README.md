@@ -3,11 +3,15 @@
 Skeleton for Node.js applications written in TypeScript
 
 
+![Introductions](./wiki/assets/introductions.png?raw=true)
+
+
 ## Purpose
 
 Our main purpose with this Skeleton is to start server application with node js and typescript.
 
 Try it!! I am happy to hear your feedback or any kind of new features.
+
 
 ## Common Features
 
