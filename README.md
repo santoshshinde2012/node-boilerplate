@@ -16,19 +16,34 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 ## Common Features
 
 - Quick start
-- Integrated eslint, prettier and husky
-- Global Error & Response Handler
-- Simple and Standard scaffolding
-- Based on Typescript Syntax
-- Simple & Global Enviroment Configuration
-- Request/Response Encryption & Decryption Implementation
-- Easily Add new feature
-- Integrated winston Logger
-- Production Ready Skeleton
-- Follwed Production Ready Best Practices: Security
-- Added only used npm modules
-- Swagger Documentation Support
-- Unit & Integration Test Cases
+    - Simple and Standard scaffolding
+    - Based on Typescript Syntax
+    - Simple & Global Enviroment Configuration
+    - Global Error & Response Handler
+    - Easily Add new feature
+    - Request/Response Encryption & Decryption Implementation
+
+- Contiuous Integration
+    - Added Github Action Workflow
+        - [sonarcloud.io](https://sonarcloud.io/summary/new_code?id=santoshshinde2012_node-boilerplate)
+        - [snyk.io](https://app.snyk.io/org/santoshshinde2012/project/c040efe4-a06a-451d-9b01-be0be90ee42c)
+        - [CodeQL](https://codeql.github.com/)
+        - [njsscan](https://opensecurity.in/#engineering) is a static application testing (SAST) tool that can find insecure code patterns in your node.js applications
+
+- Documentation Standards
+    - Swagger Documentation Support
+    - Postman Collections
+    - Readme with instructions
+
+- Test Coverage Maintenance
+    - Integrated eslint, prettier and husky
+    - Added Unit Test cases and Intgration Test Cases
+    - 80% + Code Coverage
+
+- Prodcution Ready Setup 
+    - Follwed Production Ready Best Practices: Security
+    - Integrated winston Logger
+    - Added only used npm modules
 
 ## Core NPM Module
 
@@ -61,19 +76,19 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 ## Project Structure
 
-| Name                              | Description |
-| --------------------------------- | ----------- |
-| **wiki/**                         | You can add project documentation and insructions file here |
-| **src/**                          | Source files |
-| **src/abstractions**              | Abstarct classes and Interfaces  |
-| **src/components**                | REST API Components & Controllers  |
-| **src/lib**                       | Reusable utilises and library source code like a logger|
-| **src/middleware/**               | Express Middlewares like error handler feature |
-| **build/**                        | Compiled source files will be placed here |
-| **tests/**                        | Test cases will be placed here |
-| **tests/helpers/**                | Helpers for test cases will be placed here  |
-| **tests/unit-tests/**             | Unit Test cases will be placed here  |
-| **tests/integration-tests/**      | API routes (Integration) Test cases will be placed here|
+| Name                         | Description                                                 |
+| ---------------------------- | ----------------------------------------------------------- |
+| **wiki/**                    | You can add project documentation and insructions file here |
+| **src/**                     | Source files                                                |
+| **src/abstractions**         | Abstarct classes and Interfaces                             |
+| **src/components**           | REST API Components & Controllers                           |
+| **src/lib**                  | Reusable utilises and library source code like a logger     |
+| **src/middleware/**          | Express Middlewares like error handler feature              |
+| **build/**                   | Compiled source files will be placed here                   |
+| **tests/**                   | Test cases will be placed here                              |
+| **tests/helpers/**           | Helpers for test cases will be placed here                  |
+| **tests/unit-tests/**        | Unit Test cases will be placed here                         |
+| **tests/integration-tests/** | API routes (Integration) Test cases will be placed here     |
 
 ## Workflow
 
@@ -137,4 +152,15 @@ chmod ug+x .git/hooks/*
 
 <hr/>
 
-### Please connect with me on Twitter [@shindesan2012](https://twitter.com/shindesan2012) & [https://blog.santoshshinde.com](https://blog.santoshshinde.com/)
+### Connect with me on
+<div id="badges">
+  <a href="https://twitter.com/shindesan2012">
+    <img src="https://img.shields.io/badge/shindesan2012-black?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter Badge"/>
+  </a>
+  <a href="https://www.linkedin.com/in/shindesantosh/">
+    <img src="https://img.shields.io/badge/shindesantosh-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+  </a>
+   <a href="https://blog.santoshshinde.com/">
+    <img src="https://img.shields.io/badge/Blog-black?style=for-the-badge&logo=medium&logoColor=white" alt="Medium Badge"/>
+  </a>
+</div>
