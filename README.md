@@ -1,9 +1,8 @@
-# [Node-Typescript-Boilerplate](https://blog.santoshshinde.com/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30)  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=santoshshinde2012_node-boilerplate&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=santoshshinde2012_node-boilerplate)
-
+# [Node-Typescript-Boilerplate](https://blog.santoshshinde.com/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30)  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=santoshshinde2012_node-boilerplate&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=santoshshinde2012_node-boilerplate)![Github action workflow status](https://github.com/santoshshinde2012/node-boilerplate/actions/workflows/node.js.yml/badge.svg?branch=master)![CodeQL Analysis](https://github.com/santoshshinde2012/node-boilerplate/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)![njsscan Analysis](https://github.com/santoshshinde2012/node-boilerplate/actions/workflows/njsscan.yml/badge.svg?branch=master)
 Skeleton for Node.js applications written in TypeScript
 
 
-![Introductions](./wiki/assets/introductions.png?raw=true)
+![Introductions](https://i.ibb.co/VHTZKB6/introductions.png)
 
 
 ## Purpose
