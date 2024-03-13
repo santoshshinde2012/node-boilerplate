@@ -35,6 +35,3 @@ jobs:
       run: npm run build --if-present
     - name: Test
       run: npm run test
-    - name: Coveralls GitHub Action
-      uses: coverallsapp/github-action@v2.2.3
-  
