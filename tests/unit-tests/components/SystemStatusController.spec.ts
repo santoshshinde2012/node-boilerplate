@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import SystemStatusController from '../../../src/components/system-status/system-status.controller';
-import BaseApi from '../../../src/components/BaseApi';
+import BaseController from '../../../src/components/BaseController';
 import Crypto from '../../../src/lib/crypto';
 
 describe('System Status Controller', () => {
@@ -42,7 +42,7 @@ describe('System Status Controller', () => {
     });
 
     test('test getSystemInfo method with exception', () => {
-        jest.spyOn(BaseApi.prototype, 'send').mockImplementation(() => { throw new Error('exception');}); 
+        jest.spyOn(BaseController.prototype, 'send').mockImplementation(() => { throw new Error('exception');}); 
         controller.getSystemInfo(request as Request, response as Response, next)
         expect(next).toHaveBeenCalled();
     });
@@ -56,7 +56,7 @@ describe('System Status Controller', () => {
 
 
     test('test getServerTime method with exception', () => {
-        jest.spyOn(BaseApi.prototype, 'send').mockImplementation(() => { throw new Error('exception');}); 
+        jest.spyOn(BaseController.prototype, 'send').mockImplementation(() => { throw new Error('exception');}); 
         controller.getServerTime(request as Request, response as Response, next)
         expect(next).toHaveBeenCalled();
     });
@@ -69,7 +69,7 @@ describe('System Status Controller', () => {
     });
 
     test('test getResourceUsage method with exception', () => {
-        jest.spyOn(BaseApi.prototype, 'send').mockImplementation(() => { throw new Error('exception');}); 
+        jest.spyOn(BaseController.prototype, 'send').mockImplementation(() => { throw new Error('exception');}); 
         controller.getResourceUsage(request as Request, response as Response, next)
         expect(next).toHaveBeenCalled();
     });
@@ -82,7 +82,7 @@ describe('System Status Controller', () => {
     });
 
     test('test getProcessInfo method with exception', () => {
-        jest.spyOn(BaseApi.prototype, 'send').mockImplementation(() => { throw new Error('exception');}); 
+        jest.spyOn(BaseController.prototype, 'send').mockImplementation(() => { throw new Error('exception');}); 
         controller.getProcessInfo(request as Request, response as Response, next)
         expect(next).toHaveBeenCalled();
     });

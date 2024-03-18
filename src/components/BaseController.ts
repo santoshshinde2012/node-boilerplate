@@ -3,9 +3,9 @@ import { StatusCodes } from 'http-status-codes';
 import Crypto from '../lib/crypto';
 
 /**
- * Provides services common to all API methods
+ * Base Controller
  */
-export default abstract class BaseApi {
+export default abstract class BaseController {
 	protected router: Router;
 
 	constructor() {

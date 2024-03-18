@@ -3,7 +3,7 @@ import * as os from 'os';
 import * as process from 'process';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import ApiError from '../../abstractions/ApiError';
-import BaseApi from '../BaseApi';
+import BaseController from '../BaseController';
 import {
 	IServerTimeResponse,
 	IResourceUsageResponse,
@@ -14,7 +14,7 @@ import {
 /**
  * Status controller
  */
-export default class SystemStatusController extends BaseApi {
+export default class SystemStatusController extends BaseController {
 
 	public basePath: string = 'system';
 	/**

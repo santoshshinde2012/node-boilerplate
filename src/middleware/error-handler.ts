@@ -13,7 +13,7 @@ const addErrorHandler = (
 ): void => {
 	if (err) {
 		const status: number = err.status || StatusCodes.INTERNAL_SERVER_ERROR;
-		logger.debug(`REQUEST HANDLING ERROR:
+		logger.error(`REQUEST HANDLING ERROR:
         \nERROR:\n${JSON.stringify(err)}
         \nREQUEST HEADERS:\n${util.inspect(req.headers)}
         \nREQUEST PARAMS:\n${util.inspect(req.params)}
