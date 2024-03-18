@@ -14,6 +14,7 @@ export default class App {
 	public httpServer: http.Server;
 
 	public async init(): Promise<void> {
+		const { NODE_ENV } = process.env;
 		this.express = express();
 		this.httpServer = http.createServer(this.express);
 
@@ -27,7 +28,7 @@ export default class App {
 		this.express.use(addErrorHandler);
 
 		// In a development/test environment, Swagger will be enabled.
-		if (process.env.NODE_ENV !== 'prod') {
+		if (NODE_ENV && NODE_ENV !== 'prod') {
 			this.setupSwaggerDocs();
 		}
 	}
