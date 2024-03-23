@@ -1,12 +1,8 @@
-import { existsSync, mkdirSync } from 'fs';
-import { Logger } from 'winston';
-import winston = require('winston');
+import * as winston from 'winston';
 
 const logDir = './logs';
 
-if (!existsSync(logDir)) {
-	mkdirSync(logDir);
-}
+export type Logger = winston.Logger;
 
 const logger: Logger = winston.createLogger({
 	format: winston.format.json(),
