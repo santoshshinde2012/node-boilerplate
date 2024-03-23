@@ -1,17 +1,14 @@
-import { existsSync, mkdirSync } from 'fs';
-import { Logger, createLogger, format, transports } from 'winston';
+import * as winston from 'winston';
 
 const logDir = './logs';
 
-if (!existsSync(logDir)) {
-	mkdirSync(logDir);
-}
+export type Logger = winston.Logger;
 
-const logger: Logger = createLogger({
-	format: format.json(),
+const logger: Logger = winston.createLogger({
+	format: winston.format.json(),
 	transports: [
-		new transports.Console(),
-		new transports.File({ filename: `${logDir}/combined.log` }),
+		new winston.transports.Console(),
+		new winston.transports.File({ filename: `${logDir}/combined.log` }),
 	],
 });
 
