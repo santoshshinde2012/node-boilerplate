@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/Users/santosh/Documents/workspace/boilerplates/node-boilerplate/tests/unit-tests/lib/crypto.spec.ts">
-    <testCase name="Crypto Lib (Encryption/Decryption) Testing for text" duration="11"/>
-    <testCase name="Crypto Lib (Encryption/Decryption) Testing for array" duration="2"/>
-    <testCase name="Crypto Lib (Encryption/Decryption) Testing for object" duration="2"/>
+    <testCase name="Crypto Lib (Encryption/Decryption) Testing for text" duration="5"/>
+    <testCase name="Crypto Lib (Encryption/Decryption) Testing for array" duration="1"/>
+    <testCase name="Crypto Lib (Encryption/Decryption) Testing for object" duration="1"/>
+  </file>
+  <file path="/Users/santosh/Documents/workspace/boilerplates/node-boilerplate/tests/unit-tests/components/SystemStatusController.spec.ts">
+    <testCase name="System Status Controller test getError method" duration="2"/>
+    <testCase name="System Status Controller test getSystemInfo method" duration="3"/>
+    <testCase name="System Status Controller test getSystemInfo method with updated env variables" duration="2"/>
+    <testCase name="System Status Controller test getSystemInfo method with exception" duration="0"/>
+    <testCase name="System Status Controller test getServerTime method" duration="1"/>
+    <testCase name="System Status Controller test getServerTime method with exception" duration="0"/>
+    <testCase name="System Status Controller test getResourceUsage method" duration="1"/>
+    <testCase name="System Status Controller test getResourceUsage method with exception" duration="0"/>
+    <testCase name="System Status Controller test getProcessInfo method" duration="0"/>
+    <testCase name="System Status Controller test getProcessInfo method with exception" duration="0"/>
   </file>
   <file path="/Users/santosh/Documents/workspace/boilerplates/node-boilerplate/tests/unit-tests/middleware/error-handler.spec.ts">
     <testCase name="ErrorHandler middleware with 0 status code" duration="5"/>
@@ -11,27 +23,15 @@
     <testCase name="ErrorHandler middleware with 200 status code" duration="1"/>
     <testCase name="ErrorHandler middleware with 200 status code and updated env variables" duration="2"/>
   </file>
-  <file path="/Users/santosh/Documents/workspace/boilerplates/node-boilerplate/tests/unit-tests/components/SystemStatusController.spec.ts">
-    <testCase name="System Status Controller test getError method" duration="2"/>
-    <testCase name="System Status Controller test getSystemInfo method" duration="8"/>
-    <testCase name="System Status Controller test getSystemInfo method with updated env variables" duration="3"/>
-    <testCase name="System Status Controller test getSystemInfo method with exception" duration="0"/>
-    <testCase name="System Status Controller test getServerTime method" duration="2"/>
-    <testCase name="System Status Controller test getServerTime method with exception" duration="0"/>
-    <testCase name="System Status Controller test getResourceUsage method" duration="1"/>
-    <testCase name="System Status Controller test getResourceUsage method with exception" duration="0"/>
-    <testCase name="System Status Controller test getProcessInfo method" duration="0"/>
-    <testCase name="System Status Controller test getProcessInfo method with exception" duration="0"/>
-  </file>
   <file path="/Users/santosh/Documents/workspace/boilerplates/node-boilerplate/tests/integration-tests/app.integration.spec.ts">
-    <testCase name="status integration tests can get default route success" duration="14"/>
-    <testCase name="status integration tests can get default web route success" duration="3"/>
+    <testCase name="status integration tests can get default route success" duration="13"/>
+    <testCase name="status integration tests can get default web route success" duration="2"/>
   </file>
   <file path="/Users/santosh/Documents/workspace/boilerplates/node-boilerplate/tests/integration-tests/status.integration.spec.ts">
-    <testCase name="status integration tests can get server time" duration="16"/>
+    <testCase name="status integration tests can get server time" duration="15"/>
     <testCase name="status integration tests can get server system info" duration="4"/>
     <testCase name="status integration tests can get server system usage" duration="2"/>
-    <testCase name="status integration tests can get server system process info" duration="2"/>
+    <testCase name="status integration tests can get server system process info" duration="1"/>
     <testCase name="status integration tests should get the error" duration="5"/>
   </file>
 </testExecutions>
