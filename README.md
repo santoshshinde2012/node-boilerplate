@@ -53,7 +53,7 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 - [x] `cors`
 - [x] `helmet`
 - [x] `http-status-codes`
-- [x] `winston`, `@types/winston`
+- [x] `winston`
 
 # [Start the application](https://blog.santoshshinde.com/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30)
 
