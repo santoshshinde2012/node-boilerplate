@@ -5,7 +5,7 @@ import logger from '../../src/lib/logger';
 
 export default class IntegrationHelpers {
 
-    public static appInstance: express.Application;
+    private static appInstance: express.Application;
 
     public static async getApp(): Promise<express.Application> {
         if (this.appInstance) {
