@@ -5,6 +5,7 @@ import {
     StatusCodes,
 } from 'http-status-codes';
 import IntegrationHelpers from '../helpers/Integration-helpers';
+import { log } from 'console';
 
 describe('status integration tests', () => {
     let app: express.Application;
@@ -15,18 +16,22 @@ describe('status integration tests', () => {
 
 
     it('can get default route success', async () => {
-        await request(app)
+        const response = await request(app)
             .get('/')
             .set('Accept', 'application/json')
-            .expect('Content-Type', 'application/json; charset=utf-8')
-            .expect(StatusCodes.OK);
+            .expect('Content-Type', 'application/json; charset=utf-8');
+
+        const { status } = response;
+        expect(status).toBe(StatusCodes.OK);
     });
 
     it('can get default web route success', async () => {
-        await request(app)
+        const response = await request(app)
             .get('/web')
             .set('Accept', 'application/json')
-            .expect('Content-Type', 'application/json; charset=utf-8')
-            .expect(StatusCodes.OK);
+            .expect('Content-Type', 'application/json; charset=utf-8');
+
+        const { status } = response;
+        expect(status).toBe(StatusCodes.OK);
     });
 });
