@@ -35,3 +35,7 @@ jobs:
       run: npm run build --if-present
     - name: Test
       run: npm run test
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v6.0.0
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TOKEN }}
