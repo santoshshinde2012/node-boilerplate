@@ -1,4 +1,5 @@
-# [Node-Typescript-Boilerplate](https://blog.santoshshinde.com/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30)  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=santoshshinde2012_node-boilerplate&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=santoshshinde2012_node-boilerplate)![Github action workflow status](https://github.com/santoshshinde2012/node-boilerplate/actions/workflows/node.js.yml/badge.svg?branch=master)![CodeQL Analysis](https://github.com/santoshshinde2012/node-boilerplate/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)![njsscan Analysis](https://github.com/santoshshinde2012/node-boilerplate/actions/workflows/njsscan.yml/badge.svg?branch=master)
+# [Node-Typescript-Boilerplate](https://blog.santoshshinde.com/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30)  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=santoshshinde2012_node-boilerplate&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=santoshshinde2012_node-boilerplate)![Github action workflow status](https://github.com/santoshshinde2012/node-boilerplate/actions/workflows/node.js.yml/badge.svg?branch=master)![CodeQL Analysis](https://github.com/santoshshinde2012/node-boilerplate/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)![njsscan Analysis](https://github.com/santoshshinde2012/node-boilerplate/actions/workflows/njsscan.yml/badge.svg?branch=master)![Maintainability](https://api.codeclimate.com/v1/badges/0e53f5d93de102b39641/maintainability)![Test Coverage](https://api.codeclimate.com/v1/badges/0e53f5d93de102b39641/test_coverage)
+
 Skeleton for Node.js applications written in TypeScript
 
 
@@ -28,6 +29,9 @@ Try it!! I am happy to hear your feedback or any kind of new features.
         - [snyk.io](https://app.snyk.io/org/santoshshinde2012/project/c040efe4-a06a-451d-9b01-be0be90ee42c)
         - [CodeQL](https://codeql.github.com/)
         - [njsscan](https://opensecurity.in/#engineering) is a static application testing (SAST) tool that can find insecure code patterns in your node.js applications
+        - [Codeclimate](https://codeclimate.com/)
+          - <a href="https://codeclimate.com/github/santoshshinde2012/node-boilerplate/maintainability"><img src="https://api.codeclimate.com/v1/badges/0e53f5d93de102b39641/maintainability" /></a>
+          - <a href="https://codeclimate.com/github/santoshshinde2012/node-boilerplate/test_coverage"><img src="https://api.codeclimate.com/v1/badges/0e53f5d93de102b39641/test_coverage" /></a>
 
 - Documentation Standards
     - Swagger Documentation Support
@@ -38,6 +42,8 @@ Try it!! I am happy to hear your feedback or any kind of new features.
     - Integrated eslint, prettier and husky
     - Added Unit Test cases and Intgration Test Cases
     - 80% + Code Coverage
+  
+- Codeclimate Integration with Github action workflow
 
 - Prodcution Ready Setup 
     - Follwed Production Ready Best Practices: Security
