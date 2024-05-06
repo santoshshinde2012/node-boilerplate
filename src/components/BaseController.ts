@@ -1,6 +1,5 @@
 import { Response, Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import Crypto from '../lib/crypto';
 import { getEncryptedText } from '../utils';
 
 /**

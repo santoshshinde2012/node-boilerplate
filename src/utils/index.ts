@@ -1,8 +1,8 @@
-import Crypto from "../lib/crypto";
+import Crypto from '../lib/crypto';
 
 function getEncryptedText<T>(input: T): T | string {
     const APPLY_ENCRYPTION = process.env.APPLY_ENCRYPTION === 'true';
-    const SECRET_KEY = process.env.SECRET_KEY;
+    const { SECRET_KEY } = process.env;
 
     // Encrypt only if encryption is enabled and secret key is provided
     if (APPLY_ENCRYPTION && SECRET_KEY) {
@@ -13,7 +13,9 @@ function getEncryptedText<T>(input: T): T | string {
 
     return input;
 }
+// need to remove once we have added more functions here
+export default getEncryptedText;
 
 export {
     getEncryptedText
-}
+};

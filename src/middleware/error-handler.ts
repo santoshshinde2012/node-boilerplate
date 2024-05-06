@@ -1,10 +1,10 @@
+import util from 'util';
+import { Request, Response, NextFunction } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import ApiError from '../abstractions/ApiError';
 import logger from '../lib/logger';
 import { getEncryptedText } from '../utils';
 
-import { Request, Response, NextFunction } from 'express';
-import util from 'util';
 
 const addErrorHandler = (
 	err: ApiError | null,
