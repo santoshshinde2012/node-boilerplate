@@ -1,18 +1,13 @@
-import { Response, Router } from 'express';
+import { Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { RouteDefinition } from '../types/RouteDefinition';
 import { getEncryptedText } from '../utils';
 
 /**
  * Base Controller
  */
 export default abstract class BaseController {
-	protected router: Router;
-
-	constructor() {
-		this.router = Router();
-	}
-
-	public abstract register(): void;
+	public abstract routes(): RouteDefinition[];
 
 	/**
 	 * Global method to send API response
