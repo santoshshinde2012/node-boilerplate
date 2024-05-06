@@ -1,38 +1,43 @@
-import * as util from 'util';
-import * as express from 'express';
 import { StatusCodes } from 'http-status-codes';
-import ApiError, { IError } from '../abstractions/ApiError';
-import Crypto from '../lib/crypto';
+import ApiError from '../abstractions/ApiError';
 import logger from '../lib/logger';
+import { getEncryptedText } from '../utils';
+
+import { Request, Response, NextFunction } from 'express';
+import util from 'util';
 
 const addErrorHandler = (
-	err: ApiError,
-	req: express.Request,
-	res: express.Response,
-	next: express.NextFunction,
+	err: ApiError | null,
+	req: Request,
+	res: Response,
+	next: NextFunction,
 ): void => {
 	if (err) {
-		const status: number = err.status || StatusCodes.INTERNAL_SERVER_ERROR;
-		logger.error(`REQUEST HANDLING ERROR:
-        \nERROR:\n${JSON.stringify(err)}
-        \nREQUEST HEADERS:\n${util.inspect(req.headers)}
-        \nREQUEST PARAMS:\n${util.inspect(req.params)}
-        \nREQUEST QUERY:\n${util.inspect(req.query)}
-        \nBODY:\n${util.inspect(req.body)}`);
-		let body: IError | string = {
+		const status = err.status || StatusCodes.INTERNAL_SERVER_ERROR;
+		const errorMessage = err.message || 'An error occurred during the request.';
+		const errorDetails = {
 			fields: err.fields,
-			message: err.message || 'An error occurred during the request.',
+			message: errorMessage,
 			name: err.name,
 			status,
 		};
 
-		if (process.env.APPLY_ENCRYPTION && process.env.SECRET_KEY) {
-			body = Crypto.encrypt(JSON.stringify(body), process.env.SECRET_KEY);
-		}
-		res.status(status);
-		res.send(body);
+		// Logging error details
+		logger.error(`REQUEST HANDLING ERROR:
+            \nERROR:\n${JSON.stringify(err)}
+            \nREQUEST HEADERS:\n${util.inspect(req.headers)}
+            \nREQUEST PARAMS:\n${util.inspect(req.params)}
+            \nREQUEST QUERY:\n${util.inspect(req.query)}
+            \nBODY:\n${util.inspect(req.body)}`);
+
+		// Encrypting error details if encryption is enabled
+		const body = getEncryptedText(errorDetails);
+
+		res.status(status).send(body);
+	} else {
+		next();
 	}
-	next();
 };
+
 
 export default addErrorHandler;

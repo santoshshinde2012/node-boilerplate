@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import SystemStatusController from './components/system-status/system-status.controller';
+import SystemStatusController from './components/system-status/SystemStatusController';
 
 /**
  * Here, you can register routes by instantiating the controller.

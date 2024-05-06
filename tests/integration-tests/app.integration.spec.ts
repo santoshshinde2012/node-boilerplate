@@ -5,7 +5,6 @@ import {
     StatusCodes,
 } from 'http-status-codes';
 import IntegrationHelpers from '../helpers/Integration-helpers';
-import { log } from 'console';
 
 describe('status integration tests', () => {
     let app: express.Application;
