@@ -9,7 +9,7 @@ import {
 	IResourceUsageResponse,
 	IProcessInfoResponse,
 	ISystemInfoResponse,
-} from './system-status.types';
+} from './SystemStatusTypes';
 
 /**
  * Status controller

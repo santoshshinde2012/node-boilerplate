@@ -1,6 +1,6 @@
 import { Response, Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import Crypto from '../lib/crypto';
+import { getEncryptedText } from '../utils';
 
 /**
  * Base Controller
@@ -20,11 +20,7 @@ export default abstract class BaseController {
 	 * @param statusCode
 	 */
 	public send(res: Response, statusCode: number = StatusCodes.OK): void {
-		let obj = {};
-		obj = res.locals.data;
-		if (process.env.APPLY_ENCRYPTION && process.env.SECRET_KEY) {
-			obj = Crypto.encrypt(JSON.stringify(obj), process.env.SECRET_KEY);
-		}
-		res.status(statusCode).send(obj);
+		const encryptedData = getEncryptedText(res.locals.data);
+		res.status(statusCode).send(encryptedData);
 	}
 }

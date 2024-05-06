@@ -1,90 +1,92 @@
-import 'jest';
-import { NextFunction, Request, Response } from 'express';
-import addErrorHandler from '../../../src/middleware/error-handler';
 import { StatusCodes } from 'http-status-codes';
+import { Request, Response, NextFunction } from 'express';
+import addErrorHandler from '../../../src/middleware/error-handler';
+import logger from '../../../src/lib/logger';
+import { getEncryptedText } from '../../../src/utils';
+import ApiError from '../../../src/abstractions/ApiError';
 
-describe('ErrorHandler middleware', () => {
-    let mockRequest: Partial<Request>;
-    let mockResponse: Partial<Response>;
-    let nextFunction: NextFunction = jest.fn();
+jest.mock('../../../src/lib/logger', () => ({
+    error: jest.fn(),
+}));
+
+jest.mock('../../../src/utils', () => ({
+    getEncryptedText: jest.fn((errorDetails) => JSON.stringify(errorDetails)),
+}));
+
+describe('addErrorHandler', () => {
+    let req: Partial<Request>;
+    let res: Partial<Response>;
+    let next: jest.Mock<NextFunction, []>;
 
     beforeEach(() => {
-        mockRequest = {};
-        mockResponse = {
-            status : jest.fn(),
-            send: jest.fn()
+        req = {
+            headers: {},
+            params: {},
+            query: {},
+            body: {},
         };
+        res = {
+            status: jest.fn().mockReturnThis(),
+            send: jest.fn(),
+        };
+        next = jest.fn();
     });
 
-    test('with 0 status code', async () => {
-        const status: number = StatusCodes.INTERNAL_SERVER_ERROR;
-        addErrorHandler({
-            status: 0,
-            success: false,
-            fields: {
-                name: {
-                    message: ''
-                }
-            },
-            name: '',
-            message: ''
-        }, mockRequest as Request, mockResponse as Response, nextFunction);
-
-        expect(mockResponse.status).toHaveBeenCalledWith(status);
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
-    test('with 200 status code', async () => {
-        const status: number = 200;
-        addErrorHandler({
-            status,
-            success: false,
-            fields: {
-                name: {
-                    message: ''
-                }
-            },
-            name: '',
-            message: ''
-        }, mockRequest as Request, mockResponse as Response, nextFunction);
+    it('should send encrypted error response', () => {
+        const err = new Error('Test Error') as ApiError;
+        err.status = StatusCodes.BAD_REQUEST;
 
-        expect(mockResponse.status).toHaveBeenCalledWith(status);
+        addErrorHandler(err, req as Request, res as Response, next);
+
+        expect(logger.error).toHaveBeenCalled();
+        expect(res.status).toHaveBeenCalledWith(StatusCodes.BAD_REQUEST);
+        expect(getEncryptedText).toHaveBeenCalledWith({
+            fields: undefined,
+            message: 'Test Error',
+            name: 'Error',
+            status: StatusCodes.BAD_REQUEST,
+        });
+        expect(res.send).toHaveBeenCalledWith(JSON.stringify({
+            fields: undefined,
+            message: 'Test Error',
+            name: 'Error',
+            status: StatusCodes.BAD_REQUEST,
+        }));
+        expect(next).not.toHaveBeenCalled();
     });
 
-    
-    test('with 200 status code', async () => {
-        const status: number = 200;
-        addErrorHandler({
-            status,
-            success: false,
-            fields: {
-                name: {
-                    message: ''
-                }
-            },
-            name: '',
-            message: ''
-        }, mockRequest as Request, mockResponse as Response, nextFunction);
-
-        expect(mockResponse.status).toHaveBeenCalledWith(status);
+    it('should call next if no error', () => {
+        addErrorHandler(null, req as Request, res as Response, next);
+        
+        expect(logger.error).not.toHaveBeenCalled();
+        expect(res.status).not.toHaveBeenCalled();
+        expect(res.send).not.toHaveBeenCalled();
+        expect(next).toHaveBeenCalled();
     });
 
-    test('with 200 status code and updated env variables', async () => {
-        process.env.APPLY_ENCRYPTION = 'true';
-        process.env.SECRET_KEY = 'key';
-        const status: number = 200;
-        addErrorHandler({
-            status,
-            success: false,
-            fields: {
-                name: {
-                    message: ''
-                }
-            },
-            name: '',
-            message: ''
-        }, mockRequest as Request, mockResponse as Response, nextFunction);
+    it('should handle error without status', () => {
+        const err = new Error('Test Error') as ApiError;
 
-        expect(mockResponse.status).toHaveBeenCalledWith(status);
+        addErrorHandler(err, req as Request, res as Response, next);
+
+        expect(logger.error).toHaveBeenCalled();
+        expect(res.status).toHaveBeenCalledWith(StatusCodes.INTERNAL_SERVER_ERROR);
+        expect(getEncryptedText).toHaveBeenCalledWith({
+            fields: undefined,
+            message: 'Test Error',
+            name: 'Error',
+            status: StatusCodes.INTERNAL_SERVER_ERROR,
+        });
+        expect(res.send).toHaveBeenCalledWith(JSON.stringify({
+            fields: undefined,
+            message: 'Test Error',
+            name: 'Error',
+            status: StatusCodes.INTERNAL_SERVER_ERROR,
+        }));
+        expect(next).not.toHaveBeenCalled();
     });
-
-})
+});

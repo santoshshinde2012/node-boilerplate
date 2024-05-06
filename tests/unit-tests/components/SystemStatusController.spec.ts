@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import SystemStatusController from '../../../src/components/system-status/system-status.controller';
+import SystemStatusController from '../../../src/components/system-status/SystemStatusController';
 import BaseController from '../../../src/components/BaseController';
 import Crypto from '../../../src/lib/crypto';
 
