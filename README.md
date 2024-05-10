@@ -15,13 +15,12 @@ Try it!! I am happy to hear your feedback or any kind of new features.
 
 ## Common Features
 
+## Common Features
+
 - Quick start
-    - Simple and Standard scaffolding
-    - Based on Typescript Syntax
-    - Simple & Global Enviroment Configuration
-    - Global Error & Response Handler
-    - Easily Add new feature
-    - Request/Response Encryption & Decryption Implementation
+    - Simple scaffolding based on Typescript syntax
+    - Easy global environment configuration and error handling
+    - Flexible for adding new features
 
 - Contiuous Integration
     - Added Github Action Workflow
@@ -34,22 +33,16 @@ Try it!! I am happy to hear your feedback or any kind of new features.
           - <a href="https://codeclimate.com/github/santoshshinde2012/node-boilerplate/test_coverage"><img src="https://api.codeclimate.com/v1/badges/0e53f5d93de102b39641/test_coverage" /></a>
 
 - Documentation Standards
-    - Swagger Documentation Support
-    - Postman Collections
-    - Readme with instructions
+    - Swagger documentation support and Postman collections
+    - Clear instructions in the readme file
 
 - Test Coverage Maintenance
-    - Integrated eslint, prettier and husky
-    - Added Unit Test cases and Intgration Test Cases
-    - 80% + Code Coverage
+    - Comprehensive test coverage with eslint, prettier, and husky integration
+
+- Production Ready Setup 
+    - Followed best practices for security and efficiency
+    - Integrated Winston Logger and included only necessary npm modules
   
-- Codeclimate Integration with Github action workflow
-
-- Prodcution Ready Setup 
-    - Follwed Production Ready Best Practices: Security
-    - Integrated winston Logger
-    - Added only used npm modules
-
 ## Core NPM Module
 
 - [x] `express`, `@types/express`
