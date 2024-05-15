@@ -9,6 +9,6 @@ module.exports = {
   ],
   collectCoverage: true,
   testEnvironment: 'node',
-  testResultsProcessor: "jest-sonar-reporter",
+  reporters: ['default',  'jest-to-sonar'],
   setupFiles: ['dotenv/config'],
 };
