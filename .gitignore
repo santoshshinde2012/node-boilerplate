@@ -5,6 +5,8 @@ build/
 tmp/
 temp/
 logs
+coverage
+coverage/lcov.info
 coverage/lcov-report
 coverage/coverage-final.json
 coverage/clover.xml
