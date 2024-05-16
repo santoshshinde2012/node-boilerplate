@@ -61,8 +61,8 @@ jobs:
           -Dsonar.tests=./tests
           -Dsonar.verbose=false
           -Dsonar.sourceEncoding=UTF-8
-          -Dsonar.javascript.lcov.reportPaths=${{github.workspace}}/coverage/lcov.info 
-          -Dsonar.testExecutionReportPaths=${{github.workspace}}/coverage/sonar-report.xml
+          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info 
+          -Dsonar.testExecutionReportPaths=coverage/sonar-report.xml
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
