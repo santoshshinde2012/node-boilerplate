@@ -24,19 +24,38 @@ export default class SystemStatusController extends BaseController {
 	 */
 	public routes(): RouteDefinition[] {
 		return [
-			{ path: '/info', method: 'get', handler: this.getSystemInfo.bind(this) },
-			{ path: '/time', method: 'get', handler: this.getServerTime.bind(this) },
-			{ path: '/usage', method: 'get', handler: this.getResourceUsage.bind(this) },
-			{ path: '/process', method: 'get', handler: this.getProcessInfo.bind(this) },
-			{ path: '/error', method: 'get', handler: this.getError.bind(this) },
+			{
+				path: '/info',
+				method: 'get',
+				handler: this.getSystemInfo.bind(this),
+			},
+			{
+				path: '/time',
+				method: 'get',
+				handler: this.getServerTime.bind(this),
+			},
+			{
+				path: '/usage',
+				method: 'get',
+				handler: this.getResourceUsage.bind(this),
+			},
+			{
+				path: '/process',
+				method: 'get',
+				handler: this.getProcessInfo.bind(this),
+			},
+			{
+				path: '/error',
+				method: 'get',
+				handler: this.getError.bind(this),
+			},
 			// These are the examples added here to follow if we need to create a different type of HTTP method.
 			{ path: '/', method: 'post', handler: this.getError.bind(this) },
 			{ path: '/', method: 'put', handler: this.getError.bind(this) },
 			{ path: '/', method: 'patch', handler: this.getError.bind(this) },
-			{ path: '/', method: 'delete', handler: this.getError.bind(this) }
+			{ path: '/', method: 'delete', handler: this.getError.bind(this) },
 		];
 	}
-
 
 	/**
 	 *

@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import SystemStatusController from './components/system-status/SystemStatusController';
 import { RouteDefinition } from './types/RouteDefinition';
-
+import logger from './lib/logger';
 
 function registerControllerRoutes(routes: RouteDefinition[]): Router {
 	const controllerRouter = Router();
-	routes.forEach(route => {
+	routes.forEach((route) => {
 		switch (route.method) {
 			case 'get':
 				controllerRouter.get(route.path, route.handler);
@@ -34,18 +34,23 @@ function registerControllerRoutes(routes: RouteDefinition[]): Router {
  *
  */
 export default function registerRoutes(): Router {
-	const router = Router();
+	try {
+		const router = Router();
 
-	// Define an array of controller objects
-	const controllers = [new SystemStatusController()];
+		// Define an array of controller objects
+		const controllers = [new SystemStatusController()];
 
+		// Dynamically register routes for each controller
+		controllers.forEach((controller) => {
+			// make sure each controller has basePath attribute and routes() method
+			router.use(
+				`/v1/${controller.basePath}`,
+				registerControllerRoutes(controller.routes()),
+			);
+		});
 
-	// Dynamically register routes for each controller
-	controllers.forEach((controller) => {
-		// make sure each controller has basePath attribute and routes() method
-		router.use(`/v1/${controller.basePath}`, registerControllerRoutes(controller.routes()));
-	});
-
-	return router;
+		return router;
+	} catch (error) {
+		logger.error('Unable to register the routes:', error);
+	}
 }
-
