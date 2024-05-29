@@ -57,7 +57,7 @@ jobs:
           -Dsonar.sources=.
           -Dsonar.tests=./tests
           -Dsonar.test.inclusions=**/tests/**/*.ts
-          -Dsonar.coverage.exclusions=**/tests/**/*.ts,/**/src/server.ts,node_modules/*,coverage/lcov-report/*,jest.config.js
+          -Dsonar.coverage.exclusions=**/tests/**/*.ts,/**/src/server.ts,node_modules/*,coverage/lcov-report/*,jest.config.ts
           -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info 
           -Dsonar.testExecutionReportPaths=coverage/sonar-report.xml
           -Dsonar.sourceEncoding=UTF-8

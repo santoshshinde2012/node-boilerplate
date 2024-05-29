@@ -1,4 +1,4 @@
-import Crypto from '../lib/crypto';
+import { encrypt } from '../lib/crypto';
 
 function getEncryptedText<T>(input: T): T | string {
 	const APPLY_ENCRYPTION = process.env.APPLY_ENCRYPTION === 'true';
@@ -9,7 +9,7 @@ function getEncryptedText<T>(input: T): T | string {
 		// Convert input to JSON string if it's not already a string
 		const output =
 			typeof input === 'string' ? input : JSON.stringify(input);
-		return Crypto.encrypt(output, SECRET_KEY);
+		return encrypt(output, SECRET_KEY);
 	}
 
 	return input;

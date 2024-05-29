@@ -1,3 +1,3 @@
-export type IStandardResponse = {
+export interface IStandardResponse {
 	success: boolean;
-};
+}
