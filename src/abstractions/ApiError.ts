@@ -16,7 +16,7 @@ class ApiError extends Error implements IError {
 
 	public fields: { name: { message: string } };
 
-	constructor(msg: string, statusCode: number, name: string = 'ApiError') {
+	constructor(msg: string, statusCode: number, name = 'ApiError') {
 		super();
 		this.message = msg;
 		this.status = statusCode;

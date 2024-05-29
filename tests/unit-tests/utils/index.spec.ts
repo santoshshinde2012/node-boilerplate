@@ -1,4 +1,4 @@
-import Crypto from '../../../src/lib/crypto';
+import { encrypt } from '../../../src/lib/crypto';
 import { getEncryptedText } from '../../../src/utils';
 
 jest.mock('../../../src/lib/crypto');
@@ -16,7 +16,7 @@ describe('getEncryptedText', () => {
 		const encrypted = getEncryptedText(input);
 
 		expect(encrypted).toEqual(input);
-		expect(Crypto.encrypt).not.toHaveBeenCalled();
+		expect(encrypt).not.toHaveBeenCalled();
 	});
 
 	it('should return input if secret key is not provided', () => {
@@ -27,7 +27,7 @@ describe('getEncryptedText', () => {
 		const encrypted = getEncryptedText(input);
 
 		expect(encrypted).toEqual(input);
-		expect(Crypto.encrypt).not.toHaveBeenCalled();
+		expect(encrypt).not.toHaveBeenCalled();
 	});
 
 	it('should return encrypted input if encryption is enabled and secret key is provided', () => {
@@ -38,11 +38,11 @@ describe('getEncryptedText', () => {
 		const output = '{"test":"data"}'; // JSON.stringify(input)
 		const encryptedOutput = 'encryptedData';
 
-		(Crypto.encrypt as jest.Mock).mockReturnValueOnce(encryptedOutput);
+		(encrypt as jest.Mock).mockReturnValueOnce(encryptedOutput);
 
 		const encrypted = getEncryptedText(input);
 
-		expect(Crypto.encrypt).toHaveBeenCalledWith(output, 'secret');
+		expect(encrypt).toHaveBeenCalledWith(output, 'secret');
 		expect(encrypted).toEqual(encryptedOutput);
 	});
 
@@ -53,11 +53,11 @@ describe('getEncryptedText', () => {
 		const input = 'test data';
 		const encryptedOutput = 'encryptedData';
 
-		(Crypto.encrypt as jest.Mock).mockReturnValueOnce(encryptedOutput);
+		(encrypt as jest.Mock).mockReturnValueOnce(encryptedOutput);
 
 		const encrypted = getEncryptedText(input);
 
-		expect(Crypto.encrypt).toHaveBeenCalledWith(input, 'secret');
+		expect(encrypt).toHaveBeenCalledWith(input, 'secret');
 		expect(encrypted).toEqual(encryptedOutput);
 	});
 });

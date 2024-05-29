@@ -1,5 +1,5 @@
 import 'jest';
-import Crypto from '../../../src/lib/crypto';
+import { encrypt, decrypt } from '../../../src/lib/crypto';
 
 describe('Crypto Lib (Encryption/Decryption)', () => {
 	let secretKey: string;
@@ -10,15 +10,15 @@ describe('Crypto Lib (Encryption/Decryption)', () => {
 
 	it('Testing for text', () => {
 		const data = 'This data is to be encrypted';
-		const encrypted = Crypto.encrypt(data, secretKey);
-		const decrypted = Crypto.decrypt(encrypted, secretKey);
+		const encrypted = encrypt(data, secretKey);
+		const decrypted = decrypt(encrypted, secretKey);
 		expect(decrypted).toEqual(data);
 	});
 
 	it('Testing for array', () => {
 		const data = ['this', 'is', 'array'];
-		const encrypted = Crypto.encrypt(JSON.stringify(data), secretKey);
-		const decrypted = Crypto.decrypt(encrypted, secretKey);
+		const encrypted = encrypt(JSON.stringify(data), secretKey);
+		const decrypted = decrypt(encrypted, secretKey);
 		expect(JSON.parse(decrypted)).toEqual(data);
 	});
 
@@ -27,8 +27,8 @@ describe('Crypto Lib (Encryption/Decryption)', () => {
 			key1: 'value1',
 			key2: 'value2',
 		};
-		const encrypted = Crypto.encrypt(JSON.stringify(data), secretKey);
-		const decrypted = Crypto.decrypt(encrypted, secretKey);
+		const encrypted = encrypt(JSON.stringify(data), secretKey);
+		const decrypted = decrypt(encrypted, secretKey);
 		expect(JSON.parse(decrypted)).toEqual(data);
 	});
 });
