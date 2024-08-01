@@ -13,7 +13,7 @@
     }],
     "schemes": ["http", "https"],
     "paths": {
-        "/system/info": {
+        "/v1/system/info": {
             "get": {
                 "tags": ["node-boilerplate"],
                 "summary": "get system status",
@@ -29,7 +29,7 @@
                 "security": []
             }
         },
-        "/system/time": {
+        "/v1/system/time": {
             "get": {
                 "tags": ["node-boilerplate"],
                 "summary": "get server time",
@@ -45,7 +45,7 @@
                 "security": []
             }
         },
-        "/system/usage": {
+        "/v1/system/usage": {
             "get": {
                 "tags": ["node-boilerplate"],
                 "summary": "get server usage",
@@ -61,7 +61,7 @@
                 "security": []
             }
         },
-        "/system/process": {
+        "/v1/system/process": {
             "get": {
                 "tags": ["node-boilerplate"],
                 "summary": "get server process",
