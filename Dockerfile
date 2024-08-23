@@ -1,4 +1,4 @@
-FROM node:20.15.0-slim
+FROM node:20.16.0-slim
 
 # Create a new user named "nodeuser"
 RUN useradd --user-group --create-home --system --skel /dev/null --shell /bin/false nodeuser
