@@ -58,9 +58,9 @@ export default class App {
 		const corsOptions = {
 			origin: [
 				'http://localhost:3000',
-				'http://localhost:8080/',
+				'http://localhost:8082/',
 				'http://example.com/',
-				'http://127.0.0.1:8080',
+				'http://127.0.0.1:8082',
 			],
 		};
 		this.express.use(cors(corsOptions));
@@ -69,7 +69,7 @@ export default class App {
 	private parseRequestHeader(
 		req: express.Request,
 		res: express.Response,
-		next: Function,
+		next: () => void,
 	): void {
 		// parse request header
 		// console.log(req.headers.access_token);

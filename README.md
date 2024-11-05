@@ -122,7 +122,7 @@ Set the `APPLY_ENCRYPTION` environment variable to `true` to enable encryption.
 
 The swagger documentation is available at the following url `${host}/docs`:  
 
-[http://localhost:8080/docs](http://localhost:8080/docs)
+[http://localhost:8082/docs](http://localhost:8082/docs)
 ## Default System Health Status API
 
 - `${host}/api/system/info` - Return the system information in response
