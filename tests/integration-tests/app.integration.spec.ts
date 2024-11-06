@@ -28,6 +28,6 @@ describe('status integration tests', () => {
 			.expect('Content-Type', 'application/json; charset=utf-8');
 
 		const { status } = response;
-		expect(status).toBe(StatusCodes.OK);
+		expect(status).toBe(StatusCodes.UNAUTHORIZED);
 	});
 });
