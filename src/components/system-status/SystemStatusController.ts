@@ -17,7 +17,7 @@ import { RouteDefinition } from '../../types/RouteDefinition';
  */
 export default class SystemStatusController extends BaseController {
 	// base path
-	public basePath: string = 'system';
+	public basePath = 'system';
 
 	/**
 	 *

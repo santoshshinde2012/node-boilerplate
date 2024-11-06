@@ -7,6 +7,8 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
 import registerRoutes from './routes';
 import addErrorHandler from './middleware/error-handler';
+import { StatusCodes } from 'http-status-codes';
+import { IBaseResponse } from './types/IBaseResponse';
 
 export default class App {
 	public express: express.Application;
@@ -69,18 +71,43 @@ export default class App {
 	private parseRequestHeader(
 		req: express.Request,
 		res: express.Response,
-		next: () => void,
+		next: express.NextFunction,
 	): void {
 		// parse request header
-		// console.log(req.headers.access_token);
-		next();
+		const xInternalAuthorization = req.headers['x-internal-authorization'];
+		const authorization = req.headers['authorization'];
+
+		if (!xInternalAuthorization) {
+			const error = {
+				status: StatusCodes.UNAUTHORIZED,
+				name: 'Internal Token Missing',
+			};
+			next(error);
+		} else if (!authorization) {
+			const error = {
+				status: StatusCodes.UNAUTHORIZED,
+				name: 'External Token Missing',
+			};
+			next(error);
+		} else {
+			next();
+		}
 	}
 
 	private basePathRoute(
 		request: express.Request,
 		response: express.Response,
 	): void {
-		response.json({ message: 'base path' });
+		const xInternalAuthorization =
+			request.headers['x-internal-authorization'];
+		let result: IBaseResponse = { message: 'base path' };
+		if (xInternalAuthorization) {
+			result = {
+				...result,
+				internal_access_token: xInternalAuthorization,
+			};
+		}
+		response.json(result);
 	}
 
 	private setupSwaggerDocs(): void {
