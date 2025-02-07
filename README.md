@@ -34,7 +34,9 @@ Our main purpose with this Skeleton is to start server application with node js 
 Try it!! I am happy to hear your feedback or any kind of new features.
 
 
-## Common Features
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=santoshshinde2012/node-boilerplate&type=Date)](https://star-history.com/#santoshshinde2012/node-boilerplate&Date)
 
 ## Common Features
 
