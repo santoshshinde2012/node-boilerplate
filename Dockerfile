@@ -1,5 +1,5 @@
 # Use the official Node.js slim image
-FROM node:20.16.0-slim
+FROM node:20.19.0-slim
 
 # Set environment variables
 ENV NODE_ENV=production
