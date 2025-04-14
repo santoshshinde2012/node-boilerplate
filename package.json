@@ -20,7 +20,7 @@
   "author": "Santosh Shinde",
   "license": "Apache-2.0",
   "dependencies": {
-    "@types/express": "^5.0.0",
+    "@types/express": "^5.0.1",
     "@types/node": "^22.13.1",
     "@types/swagger-ui-express": "^4.1.8",
     "cors": "^2.8.5",
