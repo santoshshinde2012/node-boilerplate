@@ -66,7 +66,8 @@ export default class SystemStatusController extends BaseController {
 		try {
 			const fullResponse: ISystemInfoResponse = {
 				cpus: os.cpus(),
-				network: os.networkInterfaces() as ISystemInfoResponse['network'],
+				network:
+					os.networkInterfaces() as ISystemInfoResponse['network'],
 				os: {
 					platform: process.platform,
 					version: os.release(),

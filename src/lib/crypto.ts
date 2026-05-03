@@ -14,13 +14,7 @@ const TAG_LENGTH = 16;
 const SALT_LENGTH = 16;
 
 function deriveKey(secretKey: string, salt: Buffer): Buffer {
-	return crypto.pbkdf2Sync(
-		secretKey,
-		salt,
-		ITERATIONS,
-		KEY_LENGTH,
-		DIGEST,
-	);
+	return crypto.pbkdf2Sync(secretKey, salt, ITERATIONS, KEY_LENGTH, DIGEST);
 }
 
 /**

@@ -12,7 +12,11 @@ const MAX_INCOMING_LENGTH = 128;
 const SAFE_PATTERN = /^[A-Za-z0-9._-]+$/;
 
 function isSafeIncoming(value: string): boolean {
-	return value.length > 0 && value.length <= MAX_INCOMING_LENGTH && SAFE_PATTERN.test(value);
+	return (
+		value.length > 0 &&
+		value.length <= MAX_INCOMING_LENGTH &&
+		SAFE_PATTERN.test(value)
+	);
 }
 
 export default function requestId(
@@ -21,7 +25,8 @@ export default function requestId(
 	next: NextFunction,
 ): void {
 	const incoming = req.header(HEADER_NAME);
-	const id = incoming && isSafeIncoming(incoming) ? incoming : crypto.randomUUID();
+	const id =
+		incoming && isSafeIncoming(incoming) ? incoming : crypto.randomUUID();
 	req.id = id;
 	res.setHeader(HEADER_NAME, id);
 	next();

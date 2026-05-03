@@ -64,10 +64,7 @@ function parsePositiveInt(
 	return parsed;
 }
 
-function parseBool(
-	value: string | undefined,
-	fallback: boolean,
-): boolean {
+function parseBool(value: string | undefined, fallback: boolean): boolean {
 	if (value === undefined) return fallback;
 	const v = value.trim().toLowerCase().replace(/;$/, '');
 	if (['1', 'true', 'yes', 'on'].includes(v)) return true;
@@ -110,8 +107,7 @@ function buildConfig(): AppConfig {
 		isTest,
 		port: parsePort(process.env.PORT, 8080),
 		logLevel:
-			process.env.LOG_LEVEL?.trim() ||
-			(isProduction ? 'info' : 'debug'),
+			process.env.LOG_LEVEL?.trim() || (isProduction ? 'info' : 'debug'),
 		encryption: {
 			enabled: encryptionEnabled,
 			secretKey,
