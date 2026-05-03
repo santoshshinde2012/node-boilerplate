@@ -1,21 +1,38 @@
 {
   "compilerOptions": {
-    "lib": ["es2018"],
-    "target": "es2018",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "lib": ["ES2022"],
+    "target": "ES2022",
+    "module": "node16",
+    "moduleResolution": "node16",
     "outDir": "./build",
+    "rootDir": ".",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowJs": true,
+    "checkJs": false,
+    "removeComments": false,
+    "declaration": false
   },
   "include": [
     "src/**/*.ts",
-    "index.js",
+    "index.js"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "build",
+    "dist",
+    "coverage",
+    "tests"
   ]
 }

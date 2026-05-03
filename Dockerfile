@@ -1,34 +1,71 @@
-# Use the official Node.js slim image
-FROM node:20.19.0-slim
+# syntax=docker/dockerfile:1.7
 
-# Set environment variables
-ENV NODE_ENV=production
+############################
+# 1. Build stage
+############################
+FROM node:22-bookworm-slim AS builder
 
-# Create and set the working directory
-WORKDIR /home/nodeuser/app
+ENV CI=true \
+    NODE_ENV=development
 
-# Create a non-root user
-RUN useradd -m -s /bin/bash nodeuser && chown -R nodeuser:nodeuser /home/nodeuser
+WORKDIR /app
 
-# Copy package.json and package-lock.json first for better caching
+# Apply latest OS-level security patches in the build image too,
+# so anything that leaks into the runtime via /app stays patched.
+RUN apt-get update \
+    && apt-get -y upgrade \
+    && rm -rf /var/lib/apt/lists/*
+
+# install ALL deps (incl. devDependencies) reproducibly
 COPY package.json package-lock.json ./
+RUN npm ci --ignore-scripts
 
-# Install only production dependencies
-RUN npm install --ignore-scripts --only=production
-
-# Copy the rest of the application code
+# copy sources and compile
 COPY tsconfig.json ./
 COPY swagger.json ./
-COPY src/ ./src
-
-# Build the project
+COPY src ./src
 RUN npm run build
 
-# Change to the non-root user
+# prune dev deps for the runtime image
+RUN npm prune --omit=dev
+
+############################
+# 2. Runtime stage
+############################
+FROM node:22-bookworm-slim AS runtime
+
+ENV NODE_ENV=production \
+    PORT=8080 \
+    NPM_CONFIG_UPDATE_NOTIFIER=false \
+    NPM_CONFIG_FUND=false
+
+# Patch base OS packages and add tini for proper PID-1 signal handling.
+RUN apt-get update \
+    && apt-get -y upgrade \
+    && apt-get install -y --no-install-recommends tini ca-certificates \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# non-root user
+RUN groupadd --system --gid 1001 nodejs \
+    && useradd  --system --uid 1001 --gid nodejs --home /home/nodeuser --shell /usr/sbin/nologin nodeuser \
+    && mkdir -p /home/nodeuser/app/logs \
+    && chown -R nodeuser:nodejs /home/nodeuser
+
+WORKDIR /home/nodeuser/app
+
+COPY --chown=nodeuser:nodejs --from=builder /app/build ./build
+COPY --chown=nodeuser:nodejs --from=builder /app/node_modules ./node_modules
+COPY --chown=nodeuser:nodejs --from=builder /app/package.json ./package.json
+COPY --chown=nodeuser:nodejs --from=builder /app/swagger.json ./swagger.json
+
 USER nodeuser
 
-# Expose the port the app runs on
-EXPOSE 8082
+EXPOSE 8080
 
-# Set the command to start the application
-CMD ["npm", "start"]
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD node -e "require('http').get('http://127.0.0.1:'+(process.env.PORT||8080)+'/healthz',r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["node", "build/src/server.js"]

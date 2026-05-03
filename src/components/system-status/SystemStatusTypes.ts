@@ -1,16 +1,16 @@
-export type INodeJsMemoryUsage = {
+export interface INodeJsMemoryUsage {
 	rss: number;
 	heapTotal: number;
 	heapUsed: number;
 	external: number;
-};
+}
 
-export type INodeJsCpuUsage = {
+export interface INodeJsCpuUsage {
 	user: number;
 	system: number;
-};
+}
 
-export type INodeJsCpuInfo = {
+export interface INodeJsCpuInfo {
 	model: string;
 	speed: number;
 	times: {
@@ -20,20 +20,20 @@ export type INodeJsCpuInfo = {
 		idle: number;
 		irq: number;
 	};
-};
+}
 
-export type ISystemMemory = {
+export interface ISystemMemory {
 	total: number;
 	free: number;
 	percentFree: number;
-};
+}
 
-export type INodeJsNetworkInterfaceBase = {
+export interface INodeJsNetworkInterfaceBase {
 	address: string;
 	netmask: string;
 	mac: string;
 	internal: boolean;
-};
+}
 
 export type INodeJsNetworkInterfaceInfoIPv4 = INodeJsNetworkInterfaceBase & {
 	family: 'IPv4';
@@ -48,12 +48,12 @@ export type INodeJsNetworkInterfaceInfo =
 	| INodeJsNetworkInterfaceInfoIPv4
 	| INodeJsNetworkInterfaceInfoIPv6;
 
-export type IServerTimeResponse = {
+export interface IServerTimeResponse {
 	date: Date;
 	utc: Date;
-};
+}
 
-export type INodeJsProcessVersions = {
+export interface INodeJsProcessVersions {
 	http_parser: string;
 	node: string;
 	v8: string;
@@ -62,13 +62,11 @@ export type INodeJsProcessVersions = {
 	zlib: string;
 	modules: string;
 	openssl: string;
-};
+}
 
-export type INodeJsProcessEnv = {
-	[key: string]: string | undefined;
-};
+export type INodeJsProcessEnv = Record<string, string | undefined>;
 
-export type IProcessInfoResponse = {
+export interface IProcessInfoResponse {
 	procCpu: INodeJsCpuUsage;
 	memUsage: INodeJsMemoryUsage;
 	env: INodeJsProcessEnv;
@@ -76,33 +74,33 @@ export type IProcessInfoResponse = {
 	uptime: number;
 	applicationVersion: string;
 	nodeDependencyVersions: INodeJsProcessVersions;
-};
+}
 
-export type IUserInfo = {
+export interface IUserInfo {
 	username: string;
 	uid: number;
 	gid: number;
-	shell: string;
+	shell: string | null;
 	homedir: string;
-};
+}
 
-export type IOsInformation = {
+export interface IOsInformation {
 	platform: string;
 	version: string;
 	totalMemory: number;
 	uptime: number;
-};
+}
 
-export type ISystemInfoResponse = {
+export interface ISystemInfoResponse {
 	cpus: INodeJsCpuInfo[];
-	network: { [index: string]: INodeJsNetworkInterfaceInfo[] };
+	network: Record<string, INodeJsNetworkInterfaceInfo[]>;
 	os: IOsInformation;
 	currentUser: IUserInfo;
-};
+}
 
-export type IResourceUsageResponse = {
+export interface IResourceUsageResponse {
 	processMemory: INodeJsMemoryUsage;
 	systemMemory: ISystemMemory;
 	processCpu: INodeJsCpuUsage;
 	systemCpu: INodeJsCpuInfo[];
-};
+}

@@ -1,26 +1,32 @@
+export type IErrorFields = Record<string, { message: string }>;
+
 export interface IError {
 	status: number;
-	fields: {
-		name: {
-			message: string;
-		};
-	};
+	fields?: IErrorFields;
 	message: string;
 	name: string;
 }
 
 class ApiError extends Error implements IError {
-	public status = 500;
+	public status: number;
 
 	public success = false;
 
-	public fields: { name: { message: string } };
+	public fields?: IErrorFields;
 
-	constructor(msg: string, statusCode: number, name = 'ApiError') {
-		super();
-		this.message = msg;
+	constructor(
+		msg: string | null | undefined,
+		statusCode: number,
+		name = 'ApiError',
+		fields?: IErrorFields,
+	) {
+		super(msg ?? '');
+		this.message = msg ?? '';
 		this.status = statusCode;
 		this.name = name;
+		this.fields = fields;
+		// preserves prototype chain when transpiled to ES5/CJS
+		Object.setPrototypeOf(this, new.target.prototype);
 	}
 }
 

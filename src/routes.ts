@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import SystemStatusController from './components/system-status/SystemStatusController';
+import BaseController from './components/BaseController';
 import { RouteDefinition } from './types/RouteDefinition';
 import logger from './lib/logger';
+import config from './config';
 
 function registerControllerRoutes(routes: RouteDefinition[]): Router {
 	const controllerRouter = Router();
@@ -17,7 +19,7 @@ function registerControllerRoutes(routes: RouteDefinition[]): Router {
 				controllerRouter.put(route.path, route.handler);
 				break;
 			case 'patch':
-				controllerRouter.put(route.path, route.handler);
+				controllerRouter.patch(route.path, route.handler);
 				break;
 			case 'delete':
 				controllerRouter.delete(route.path, route.handler);
@@ -29,28 +31,33 @@ function registerControllerRoutes(routes: RouteDefinition[]): Router {
 	return controllerRouter;
 }
 
+interface ControllerLike extends BaseController {
+	basePath: string;
+}
+
 /**
- * Here, you can register routes by instantiating the controller.
- *
+ * Register all controller-backed routes under /v1.
+ * Returns an empty router on registration failure so the app can still boot.
  */
 export default function registerRoutes(): Router {
+	const router = Router();
+
 	try {
-		const router = Router();
+		const controllers: ControllerLike[] = [];
 
-		// Define an array of controller objects
-		const controllers = [new SystemStatusController()];
+		if (config.exposeSystemRoutes) {
+			controllers.push(new SystemStatusController());
+		}
 
-		// Dynamically register routes for each controller
 		controllers.forEach((controller) => {
-			// make sure each controller has basePath attribute and routes() method
 			router.use(
 				`/v1/${controller.basePath}`,
 				registerControllerRoutes(controller.routes()),
 			);
 		});
-
-		return router;
 	} catch (error) {
 		logger.error('Unable to register the routes:', error);
 	}
+
+	return router;
 }

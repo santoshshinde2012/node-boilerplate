@@ -1,93 +1,226 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "description": "Node Typescript Boilerplate for Microservices. Skeleton for Node.js Apps written in TypeScript (with Setup Instructions for ESLint, Prettier, and Husky)",
-        "version": "1.0.0",
-        "title": "Node Boilerplate"
-    },
-    "host": "",
-    "basePath": "",
-    "tags": [{
-        "name": "node-boilerplate",
-        "description": "Node Typescript Boilerplate"
-    }],
-    "schemes": ["http", "https"],
-    "paths": {
-        "/v1/system/info": {
-            "get": {
-                "tags": ["node-boilerplate"],
-                "summary": "get system status",
-                "description": "",
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/ApiResponse"
-                        }
-                    }
-                },
-                "security": []
-            }
-        },
-        "/v1/system/time": {
-            "get": {
-                "tags": ["node-boilerplate"],
-                "summary": "get server time",
-                "description": "",
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/ApiResponse"
-                        }
-                    }
-                },
-                "security": []
-            }
-        },
-        "/v1/system/usage": {
-            "get": {
-                "tags": ["node-boilerplate"],
-                "summary": "get server usage",
-                "description": "",
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/ApiResponse"
-                        }
-                    }
-                },
-                "security": []
-            }
-        },
-        "/v1/system/process": {
-            "get": {
-                "tags": ["node-boilerplate"],
-                "summary": "get server process",
-                "description": "",
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/ApiResponse"
-                        }
-                    }
-                },
-                "security": []
-            }
-        }
-    },
-    "securityDefinitions": {},
-    "definitions": {
-        "ApiResponse": {
-            "type": "object",
-            "properties": {
-            }
-        }
-    },
-    "externalDocs": {
-        "description": "Find out more about Node Typescript Boilerplate",
-        "url": "https://blog.santoshshinde.com/skeleton-for-node-js-apps-written-in-typescript-444fa1695b30"
-    }
+	"openapi": "3.0.3",
+	"info": {
+		"title": "Node Boilerplate",
+		"description": "Production-ready Node.js + TypeScript boilerplate. Every response includes an `x-request-id` header (echoed if the client supplies one and matches `^[A-Za-z0-9._-]{1,128}$`, otherwise minted server-side).",
+		"version": "2.1.0",
+		"license": {
+			"name": "Apache-2.0",
+			"url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+		},
+		"contact": {
+			"name": "Santosh Shinde",
+			"url": "https://github.com/santoshshinde2012/node-boilerplate"
+		}
+	},
+	"servers": [
+		{ "url": "http://localhost:8080", "description": "Local development" }
+	],
+	"tags": [
+		{ "name": "health", "description": "Liveness and readiness probes" },
+		{ "name": "system", "description": "Diagnostic endpoints. Filtered in production." }
+	],
+	"paths": {
+		"/": {
+			"get": {
+				"tags": ["health"],
+				"summary": "Base path liveness ping",
+				"responses": {
+					"200": {
+						"description": "Liveness response",
+						"content": {
+							"application/json": {
+								"schema": { "$ref": "#/components/schemas/BaseResponse" }
+							}
+						},
+						"headers": {
+							"x-request-id": { "$ref": "#/components/headers/RequestId" }
+						}
+					}
+				}
+			}
+		},
+		"/healthz": {
+			"get": {
+				"tags": ["health"],
+				"summary": "Liveness probe",
+				"responses": {
+					"200": {
+						"description": "Service is alive",
+						"content": {
+							"application/json": {
+								"schema": { "$ref": "#/components/schemas/HealthResponse" }
+							}
+						}
+					}
+				}
+			}
+		},
+		"/readyz": {
+			"get": {
+				"tags": ["health"],
+				"summary": "Readiness probe",
+				"responses": {
+					"200": {
+						"description": "Service is ready",
+						"content": {
+							"application/json": {
+								"schema": { "$ref": "#/components/schemas/HealthResponse" }
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/system/info": {
+			"get": {
+				"tags": ["system"],
+				"summary": "Get system information",
+				"description": "Returns OS / CPU / network info. In production the response is reduced to non-sensitive fields.",
+				"responses": {
+					"200": {
+						"description": "System information",
+						"content": {
+							"application/json": { "schema": { "type": "object" } }
+						}
+					},
+					"500": { "$ref": "#/components/responses/ServerError" }
+				}
+			}
+		},
+		"/v1/system/time": {
+			"get": {
+				"tags": ["system"],
+				"summary": "Get current server time",
+				"responses": {
+					"200": {
+						"description": "Server time payload",
+						"content": {
+							"application/json": {
+								"schema": { "$ref": "#/components/schemas/TimeResponse" }
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/system/usage": {
+			"get": {
+				"tags": ["system"],
+				"summary": "Get process and system memory / CPU usage",
+				"responses": {
+					"200": {
+						"description": "Resource usage payload",
+						"content": {
+							"application/json": { "schema": { "type": "object" } }
+						}
+					}
+				}
+			}
+		},
+		"/v1/system/process": {
+			"get": {
+				"tags": ["system"],
+				"summary": "Get process information",
+				"description": "Returns Node.js process details. In production `process.env` is omitted.",
+				"responses": {
+					"200": {
+						"description": "Process info payload",
+						"content": {
+							"application/json": { "schema": { "type": "object" } }
+						}
+					}
+				}
+			}
+		},
+		"/v1/system/error": {
+			"get": {
+				"tags": ["system"],
+				"summary": "Sample error endpoint",
+				"description": "Always returns a 400 — useful to verify the error handler shape.",
+				"responses": {
+					"400": { "$ref": "#/components/responses/BadRequest" }
+				}
+			}
+		}
+	},
+	"components": {
+		"headers": {
+			"RequestId": {
+				"description": "Per-request UUID for log correlation",
+				"schema": { "type": "string" }
+			}
+		},
+		"schemas": {
+			"BaseResponse": {
+				"type": "object",
+				"required": ["message"],
+				"properties": {
+					"message": { "type": "string", "example": "base path" }
+				}
+			},
+			"HealthResponse": {
+				"type": "object",
+				"required": ["status", "uptime", "timestamp"],
+				"properties": {
+					"status": { "type": "string", "example": "ok" },
+					"uptime": { "type": "number", "format": "double", "example": 12.34 },
+					"timestamp": {
+						"type": "string",
+						"format": "date-time",
+						"example": "2024-01-01T00:00:00.000Z"
+					}
+				}
+			},
+			"TimeResponse": {
+				"type": "object",
+				"required": ["date", "utc"],
+				"properties": {
+					"date": { "type": "string", "format": "date-time" },
+					"utc": { "type": "string", "format": "date-time" }
+				}
+			},
+			"ApiError": {
+				"type": "object",
+				"required": ["status", "name", "message"],
+				"properties": {
+					"status": { "type": "integer", "example": 400 },
+					"name": { "type": "string", "example": "BadRequest" },
+					"message": { "type": "string", "example": "Sample error endpoint" },
+					"requestId": { "type": "string", "example": "1d3a8b6e-..." },
+					"fields": {
+						"type": "object",
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"message": { "type": "string" }
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"BadRequest": {
+				"description": "Bad request",
+				"content": {
+					"application/json": {
+						"schema": { "$ref": "#/components/schemas/ApiError" }
+					}
+				}
+			},
+			"ServerError": {
+				"description": "Internal server error",
+				"content": {
+					"application/json": {
+						"schema": { "$ref": "#/components/schemas/ApiError" }
+					}
+				}
+			}
+		}
+	},
+	"externalDocs": {
+		"description": "Project README",
+		"url": "https://github.com/santoshshinde2012/node-boilerplate"
+	}
 }

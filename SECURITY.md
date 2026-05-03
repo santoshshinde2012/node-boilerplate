@@ -2,20 +2,48 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Security fixes are applied to the most recent minor release line on `master`.
+Older majors are best-effort only; please upgrade to receive patches.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| Version | Supported |
+| ------- | --------- |
+| 2.x     | ✅        |
+| < 2.0   | ❌        |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+**Please do not open a public GitHub issue for security reports.** They are
+indexed by search engines as soon as they appear, which often defeats the
+point of responsible disclosure.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Instead, use one of the following private channels:
+
+- GitHub's [Private Vulnerability Reporting](https://github.com/santoshshinde2012/node-boilerplate/security/advisories/new) (preferred).
+- Email the maintainer at the address listed on the
+  [GitHub profile](https://github.com/santoshshinde2012).
+
+When you report, please include:
+
+1. A description of the vulnerability and its impact.
+2. Steps to reproduce, ideally a minimal proof of concept.
+3. The affected version, environment and config.
+4. Whether you have a suggested fix.
+
+### What to expect
+
+| Stage              | Target SLA                                    |
+| ------------------ | --------------------------------------------- |
+| Acknowledgement    | within 48 hours of receipt                    |
+| Initial assessment | within 5 working days                         |
+| Fix or mitigation  | proportional to severity (CVSS-driven)        |
+| Public disclosure  | coordinated with the reporter; default 90 days |
+
+We will credit reporters in the release notes unless you ask to remain
+anonymous.
+
+## Hardening reference
+
+This boilerplate ships with the controls listed in
+[`wiki/instructions.md`](wiki/instructions.md#2-production-security-checklist).
+If you find one of those controls is not actually enforced in code, that is a
+security bug — please report it via the channels above.

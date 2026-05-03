@@ -4,6 +4,7 @@ import * as process from 'process';
 import { StatusCodes } from 'http-status-codes';
 import ApiError from '../../abstractions/ApiError';
 import BaseController from '../BaseController';
+import config from '../../config';
 import {
 	IServerTimeResponse,
 	IResourceUsageResponse,
@@ -13,15 +14,15 @@ import {
 import { RouteDefinition } from '../../types/RouteDefinition';
 
 /**
- * Status controller
+ * Status controller.
+ *
+ * In production these endpoints can leak environment variables, secrets,
+ * network interfaces and OS user info. They are therefore filtered before
+ * being returned. To disable them entirely, set EXPOSE_SYSTEM_ROUTES=false.
  */
 export default class SystemStatusController extends BaseController {
-	// base path
 	public basePath = 'system';
 
-	/**
-	 *
-	 */
 	public routes(): RouteDefinition[] {
 		return [
 			{
@@ -49,7 +50,7 @@ export default class SystemStatusController extends BaseController {
 				method: 'get',
 				handler: this.getError.bind(this),
 			},
-			// These are the examples added here to follow if we need to create a different type of HTTP method.
+			// HTTP method examples – all reuse getError as a placeholder
 			{ path: '/', method: 'post', handler: this.getError.bind(this) },
 			{ path: '/', method: 'put', handler: this.getError.bind(this) },
 			{ path: '/', method: 'patch', handler: this.getError.bind(this) },
@@ -57,21 +58,15 @@ export default class SystemStatusController extends BaseController {
 		];
 	}
 
-	/**
-	 *
-	 * @param req
-	 * @param res
-	 * @param next
-	 */
 	public getSystemInfo(
-		req: Request,
+		_req: Request,
 		res: Response,
 		next: NextFunction,
 	): void {
 		try {
-			const response: ISystemInfoResponse = {
+			const fullResponse: ISystemInfoResponse = {
 				cpus: os.cpus(),
-				network: os.networkInterfaces(),
+				network: os.networkInterfaces() as ISystemInfoResponse['network'],
 				os: {
 					platform: process.platform,
 					version: os.release(),
@@ -80,49 +75,43 @@ export default class SystemStatusController extends BaseController {
 				},
 				currentUser: os.userInfo(),
 			};
-			res.locals.data = response;
-			// call base class method
+
+			// In production strip network interfaces and user info – they leak
+			// internal IPs, MAC addresses, usernames and home directories.
+			res.locals.data = config.isProduction
+				? {
+						os: fullResponse.os,
+						cpuCount: fullResponse.cpus.length,
+					}
+				: fullResponse;
+
 			super.send(res);
 		} catch (err) {
 			next(err);
 		}
 	}
 
-	/**
-	 *
-	 * @param req
-	 * @param res
-	 * @param next
-	 */
-	public getError(req: Request, res: Response, next: NextFunction): void {
-		try {
-			throw new ApiError(null, StatusCodes.BAD_REQUEST);
-		} catch (error) {
-			// from here error handler will get call
-			next(error);
-		}
+	public getError(_req: Request, _res: Response, next: NextFunction): void {
+		next(
+			new ApiError(
+				'Sample error endpoint',
+				StatusCodes.BAD_REQUEST,
+				'BadRequest',
+			),
+		);
 	}
 
-	/**
-	 *
-	 * @param req
-	 * @param res
-	 * @param next
-	 */
 	public getServerTime(
-		req: Request,
+		_req: Request,
 		res: Response,
 		next: NextFunction,
 	): void {
 		try {
 			const now: Date = new Date();
 			const utc: Date = new Date(
-				now.getTime() + now.getTimezoneOffset() * 60000,
+				now.getTime() + now.getTimezoneOffset() * 60_000,
 			);
-			const time: IServerTimeResponse = {
-				utc,
-				date: now,
-			};
+			const time: IServerTimeResponse = { utc, date: now };
 			res.locals.data = time;
 			super.send(res);
 		} catch (error) {
@@ -130,28 +119,22 @@ export default class SystemStatusController extends BaseController {
 		}
 	}
 
-	/**
-	 *
-	 * @param req
-	 * @param res
-	 * @param next
-	 */
 	public getResourceUsage(
-		req: Request,
+		_req: Request,
 		res: Response,
 		next: NextFunction,
 	): void {
 		try {
 			const totalMem: number = os.totalmem();
 			const memProc: NodeJS.MemoryUsage = process.memoryUsage();
-			const freemMem: number = os.freemem();
+			const freeMem: number = os.freemem();
 
 			const response: IResourceUsageResponse = {
 				processMemory: memProc,
 				systemMemory: {
-					free: freemMem,
+					free: freeMem,
 					total: totalMem,
-					percentFree: Math.round((freemMem / totalMem) * 100),
+					percentFree: Math.round((freeMem / totalMem) * 100),
 				},
 				processCpu: process.cpuUsage(),
 				systemCpu: os.cpus(),
@@ -164,19 +147,13 @@ export default class SystemStatusController extends BaseController {
 		}
 	}
 
-	/**
-	 *
-	 * @param req
-	 * @param res
-	 * @param next
-	 */
 	public getProcessInfo(
-		req: Request,
+		_req: Request,
 		res: Response,
 		next: NextFunction,
 	): void {
 		try {
-			const response: IProcessInfoResponse = {
+			const fullResponse: IProcessInfoResponse = {
 				procCpu: process.cpuUsage(),
 				memUsage: process.memoryUsage(),
 				env: process.env,
@@ -185,7 +162,21 @@ export default class SystemStatusController extends BaseController {
 				applicationVersion: process.version,
 				nodeDependencyVersions: process.versions,
 			};
-			res.locals.data = response;
+
+			// `process.env` regularly contains secrets (DB URLs, API keys,
+			// SECRET_KEY itself) – never expose it outside development.
+			res.locals.data = config.isProduction
+				? {
+						procCpu: fullResponse.procCpu,
+						memUsage: fullResponse.memUsage,
+						pid: fullResponse.pid,
+						uptime: fullResponse.uptime,
+						applicationVersion: fullResponse.applicationVersion,
+						nodeDependencyVersions:
+							fullResponse.nodeDependencyVersions,
+					}
+				: fullResponse;
+
 			super.send(res);
 		} catch (err) {
 			next(err);

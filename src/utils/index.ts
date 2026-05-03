@@ -14,7 +14,7 @@ function getEncryptedText<T>(input: T): T | string {
 
 	return input;
 }
-// need to remove once we have added more functions here
+
 export default getEncryptedText;
 
 export { getEncryptedText };

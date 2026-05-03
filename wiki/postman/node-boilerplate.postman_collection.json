@@ -1,11 +1,76 @@
 {
 	"info": {
 		"name": "node-boilerplate",
+		"description": "Postman collection for the node-typescript-boilerplate project. Set the BASE_URL and (optionally) AUTH_TOKEN / INTERNAL_TOKEN collection variables before running.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "system",
+			"name": "root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/",
+					"host": ["{{BASE_URL}}"],
+					"path": [""]
+				},
+				"description": "Liveness ping. Returns `{ \"message\": \"base path\" }`."
+			},
+			"response": []
+		},
+		{
+			"name": "health",
+			"item": [
+				{
+					"name": "healthz",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/healthz",
+							"host": ["{{BASE_URL}}"],
+							"path": ["healthz"]
+						},
+						"description": "Liveness probe. Returns 200 with uptime and timestamp."
+					},
+					"response": []
+				},
+				{
+					"name": "readyz",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/readyz",
+							"host": ["{{BASE_URL}}"],
+							"path": ["readyz"]
+						},
+						"description": "Readiness probe. Returns 200 with uptime and timestamp."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "web (auth-protected demo)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{ "key": "x-internal-authorization", "value": "{{INTERNAL_TOKEN}}" },
+					{ "key": "Authorization", "value": "Bearer {{AUTH_TOKEN}}" }
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/web",
+					"host": ["{{BASE_URL}}"],
+					"path": ["web"]
+				},
+				"description": "Demo endpoint requiring both `x-internal-authorization` and `Authorization` headers."
+			},
+			"response": []
+		},
+		{
+			"name": "system (v1)",
 			"item": [
 				{
 					"name": "info",
@@ -13,14 +78,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/system/info",
-							"host": [
-								"{{BASE_URL}}"
-							],
-							"path": [
-								"system",
-								"info"
-							]
+							"raw": "{{BASE_URL}}/v1/system/info",
+							"host": ["{{BASE_URL}}"],
+							"path": ["v1", "system", "info"]
 						}
 					},
 					"response": []
@@ -31,14 +91,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/system/time",
-							"host": [
-								"{{BASE_URL}}"
-							],
-							"path": [
-								"system",
-								"time"
-							]
+							"raw": "{{BASE_URL}}/v1/system/time",
+							"host": ["{{BASE_URL}}"],
+							"path": ["v1", "system", "time"]
 						}
 					},
 					"response": []
@@ -49,14 +104,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/system/usage",
-							"host": [
-								"{{BASE_URL}}"
-							],
-							"path": [
-								"system",
-								"usage"
-							]
+							"raw": "{{BASE_URL}}/v1/system/usage",
+							"host": ["{{BASE_URL}}"],
+							"path": ["v1", "system", "usage"]
 						}
 					},
 					"response": []
@@ -67,15 +117,24 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/system/process",
-							"host": [
-								"{{BASE_URL}}"
-							],
-							"path": [
-								"system",
-								"process"
-							]
+							"raw": "{{BASE_URL}}/v1/system/process",
+							"host": ["{{BASE_URL}}"],
+							"path": ["v1", "system", "process"]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "error (sample)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/v1/system/error",
+							"host": ["{{BASE_URL}}"],
+							"path": ["v1", "system", "error"]
+						},
+						"description": "Always returns a sample 400 error – useful to verify error-handler shape."
 					},
 					"response": []
 				}
@@ -85,28 +144,16 @@
 	"event": [
 		{
 			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
+			"script": { "type": "text/javascript", "exec": [""] }
 		},
 		{
 			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
+			"script": { "type": "text/javascript", "exec": [""] }
 		}
 	],
 	"variable": [
-		{
-			"key": "BASE_URL",
-			"value": "http://localhost:8082",
-			"type": "string"
-		}
+		{ "key": "BASE_URL", "value": "http://localhost:8080", "type": "string" },
+		{ "key": "INTERNAL_TOKEN", "value": "", "type": "string" },
+		{ "key": "AUTH_TOKEN", "value": "", "type": "string" }
 	]
 }

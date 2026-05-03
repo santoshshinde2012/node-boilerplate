@@ -2,18 +2,21 @@
 .vscode/
 node_modules/
 build/
+dist/
 tmp/
 temp/
-logs
-coverage
-coverage/lcov.info
-coverage/lcov-report
-coverage/coverage-final.json
-coverage/clover.xml
-/.nyc_output/
 logs/
+coverage/
+.nyc_output/
 
-# don't check in  env files
-.env.prod
-.env.staging
+# secrets / env files (never commit)
+.env
+.env.*
+!.env.example
+
+# editor / OS
 **/.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
